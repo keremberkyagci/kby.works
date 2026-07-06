@@ -38,35 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* ── Custom Cursor ── */
-        @media (pointer: fine) {
-            body, a, button, .project-card, .skill-card, .logo {
-                cursor: none !important;
-            }
-        }
-        
-        .cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary-light);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .cursor.hover {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(99, 102, 241, 0.1);
-            border-color: transparent;
-            backdrop-filter: blur(2px);
-        }
-
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
@@ -876,7 +847,52 @@
             font-size: 0.9rem;
         }
 
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--primary);
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .footer-contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contact-item i { color: var(--primary-light); }
+
         .footer-copy { color: var(--text-muted); font-size: 0.85rem; }
+        .heart { color: #ef4444; }
 
         /* ── Scroll Reveal ── */
         .reveal {
@@ -906,12 +922,11 @@
             .experience-timeline::before { left: 10px; }
             .timeline-item { padding-left: 2.5rem; }
             .timeline-dot { left: 4px; }
+            .footer-contact-info { flex-direction: column; gap: 1rem; align-items: center; }
         }
     </style>
 </head>
 <body>
-
-    <div class="cursor" id="custom-cursor"></div>
 
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-close-btn" id="mobileClose"><i class="fas fa-times"></i></button>
@@ -1221,17 +1236,18 @@ Uçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziya
             <div class="section-dots"><i class="fas fa-circle"></i><i class="fas fa-circle big"></i><i class="fas fa-circle"></i></div>
             <span class="section-tag">İletişim</span>
             <h2 class="section-title">Bana Ulaşın</h2>
+            <p class="section-desc">Staj fırsatları, projeler veya işbirlikleri için iletişime geçebilirsiniz.</p>
         </div>
         <div class="contact-grid">
             <div class="contact-info reveal">
                 <h3>İletişime Geçelim</h3>
-                <p>Ürün stajı, yapay zeka projeleri veya işbirlikleri için benimle iletişime geçebilirsiniz.</p>
+                <p>Yeni bir ürün mü geliştiriyorsunuz? Bir AI entegrasyonu mu planlıyorsunuz? Ya da sadece merhaba mı demek istiyorsunuz? En kısa sürede dönerim.</p>
                 <div class="contact-links">
                     <a href="tel:+905055839560" class="contact-link">
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Telefon</strong>
-                            <span>0 505 583 95 60</span>
+                            <span>+90 505 583 95 60</span>
                         </div>
                     </a>
                     <a href="mailto:keremyxgci@gmail.com" class="contact-link">
@@ -1239,6 +1255,20 @@ Uçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziya
                         <div>
                             <strong>E-posta</strong>
                             <span>keremyxgci@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kerem-berk-yağcı-5312a1317" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin-in"></i>
+                        <div>
+                            <strong>LinkedIn</strong>
+                            <span>linkedin.com/in/kerem-berk-yağcı</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/keremberkyagci" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <strong>GitHub</strong>
+                            <span>github.com/keremberkyagci</span>
                         </div>
                     </a>
                 </div>
@@ -1254,34 +1284,33 @@ Uçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziya
     <footer>
         <div class="footer-brand">KBY.</div>
         <p class="footer-desc">
-            Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici .
+            Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici.
         </p>
-        <p class="footer-copy">© 2026 Kerem Berk Yağcı.</p>
+        <div class="footer-social">
+            <a href="https://github.com/keremberkyagci" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kerem-berk-yağcı-5312a1317" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:keremyxgci@gmail.com" title="E-posta"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-contact-info">
+            <div class="footer-contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+90 505 583 95 60</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>İstanbul, Türkiye</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>keremyxgci@gmail.com</span>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 Kerem Berk Yağcı. <span class="heart">❤</span> ile yapıldı.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <script>
-        // ── Custom Cursor Logic ──
-        const cursor = document.getElementById('custom-cursor');
-        
-        // Sadece fareli cihazlarda imleç efekti çalışsın (mobilde gizle)
-        if (window.matchMedia("(pointer: fine)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
-
-            const interactables = document.querySelectorAll('a, button, .project-card, .skill-card, .logo, .about-image-frame');
-            
-            interactables.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        } else {
-            cursor.style.display = 'none';
-        }
-
         // ── Navbar scroll effect ──
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
