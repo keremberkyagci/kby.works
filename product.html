@@ -1525,12 +1525,8 @@
                 badge: "Dijital Sağlık",
                 cases: [
                     {
-                        problem: "Sosyal medya uygulamalarındaki dikey video (Reels/Shorts) akışlarının yarattığı dijital bağımlılık.",
-                        solution: "AccessibilityService ile Instagram ekran içeriğini gerçek zamanlı analiz ederek Reels sayfasına girişi tespit eden bir takip sistemi kurguladım."
-                    },
-                    {
-                        problem: "Mevcut 'app blocker'ların uygulamayı tamamen kapatması nedeniyle mesajlaşma gibi faydalı özelliklerin de kullanılamaması.",
-                        solution: "Uygulamayı tamamen kapatmak yerine, sadece bağımlılık yaratan dikey video akışlarını WindowManager overlay ile anlık olarak engelleyen bir katman geliştirdim."
+                        problem: "Dijital bağımlılığı azaltmaya yönelik uygulamaların büyük çoğunluğu, sosyal medya platformlarını tamamen engelliyor. Ancak kullanıcıların temel bağımlılık kaynağı çoğu zaman uygulamanın kendisi değil, Reels, Shorts ve TikTok benzeri dikey video akışlarıdır. Bu nedenle uygulamaların tamamen engellenmesi, kullanıcı deneyimini olumsuz etkilerken sürdürülebilir bir çözüm sunmuyor.",
+                        solution: "Sosyal medya platformlarına erişimi tamamen kısıtlamak yerine, yalnızca bağımlılık oluşturan dikey video akışlarını hedef alan bir çözüm tasarladım. Böylece kullanıcılar mesajlaşma, içerik paylaşımı ve diğer sosyal medya işlevlerini kullanmaya devam ederken, dikkat dağıtıcı kısa video içeriklerinden uzak kalabiliyor. Bu yaklaşımla, dijital bağımlılığı azaltırken kullanıcı deneyimini mümkün olduğunca korumayı hedefledim."
                     }
                 ],
                 tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
@@ -1544,8 +1540,8 @@
                         solution: "ChromaDB ve LangChain kullanarak ders içeriklerini semantik olarak indeksleyen bir RAG Pipeline kurguladım. Bu sayede öğrenciye kendi kitapları üzerinden cevap veren bir sistem oluşturdum."
                     },
                     {
-                        problem: "Matematiksel ifadelerin ve karmaşık formüllerin dijital asistanlar tarafından hatalı veya eksik görüntülenmesi.",
-                        solution: "LaTeX desteği ve streaming yanıt yapısı entegrasyonu ile matematik odaklı, gerçek zamanlı ve görsel olarak hatasız bir deneyim sundum."
+                        problem: "Karmaşık matematiksel ifadelerin ve formüllerin dijital asistanlar tarafından hatalı görüntülenmesi veya metin tabanlı yanıtların yetersiz kalması.",
+                        solution: "LaTeX desteği ve streaming yanıt yapısı entegrasyonu ile matematik odaklı, gerçek zamanlı ve görsel olarak hatasız bir deneyim sundum. Flutter istemcisi ile FastAPI tabanlı Python backend geliştirerek uçtan uca (end-to-end) bir ürün deneyimi kurguladım."
                     }
                 ],
                 tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
