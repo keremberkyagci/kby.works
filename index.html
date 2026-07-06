@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kby.works - Hoş Geldiniz">
+    <title>kby.works</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <main class="landing">
+        <div class="landing-bg"></div>
+        <div class="landing-content">
+            <div class="landing-logo">kby.works</div>
+            <h1 class="landing-title">Hangi tarafımı görmek istersin?</h1>
+            <p class="landing-subtitle">Bir alan seç ve çalışmalarımı keşfet</p>
+            <div class="landing-choices">
+                <a href="developer.html" class="choice-card">
+                    <div class="choice-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="choice-title">Yazılım Geliştirici</h2>
+                    <p class="choice-desc">Web, mobil ve backend projeleri, açık kaynak katkıları ve teknik yetenekler</p>
+                    <span class="choice-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+                <a href="product.html" class="choice-card">
+                    <div class="choice-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h2 class="choice-title">Product</h2>
+                    <p class="choice-desc">Ürün yönetimi, strateji, kullanıcı deneyimi ve çözüm odaklı yaklaşımlar</p>
+                    <span class="choice-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+                <a href="social-media-and-growth.html" class="choice-card">
+                    <div class="choice-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="choice-title">Social Media & Growth</h2>
+                    <p class="choice-desc">Dijital pazarlama, içerik üretimi, marka yönetimi ve sosyal medya stratejileri</p>
+                    <span class="choice-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+            <div class="landing-footer">
+                <span>&copy; 2026 kby.works</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Color themes for each card
+        const themes = {
+            default: {
+                primary: '#6b7280',
+                primaryLight: '#9ca3af',
+                accent: '#9ca3af',
+                bg: '#f3f4f6',
+                bgCard: '#ffffff',
+                textPrimary: '#1f2937',
+                textSecondary: '#4b5563',
+                textMuted: '#6b7280',
+                titleColor: '#374151',
+                descColor: '#6b7280',
+                iconColor: '#9ca3af',
+                gradient: 'linear-gradient(135deg, #6b7280, #9ca3af)',
+                shadowGlow: 'rgba(107, 114, 128, 0.15)',
+                bgGradient: 'linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)',
+                cardBg: 'rgba(243, 244, 246, 0.8)',
+                cardBorder: '#d1d5db'
+            },
+            developer: {
+                primary: '#6366f1',
+                primaryLight: '#818cf8',
+                accent: '#06b6d4',
+                bg: '#0f0f1a',
+                bgCard: '#16162a',
+                textPrimary: '#f1f5f9',
+                textSecondary: '#94a3b8',
+                textMuted: '#64748b',
+                titleColor: '#f1f5f9',
+                descColor: '#94a3b8',
+                iconColor: '#818cf8',
+                gradient: 'linear-gradient(135deg, #6366f1, #06b6d4)',
+                shadowGlow: 'rgba(99, 102, 241, 0.15)',
+                bgGradient: 'linear-gradient(135deg, #0f0f1a 0%, #1a1a3a 100%)',
+                cardBg: '#16162a',
+                cardBorder: '#6366f1'
+            },
+            product: {
+                primary: '#f97316',
+                primaryLight: '#fdba74',
+                accent: '#d97706',
+                bg: '#0f0f1a',
+                bgCard: '#16162a',
+                textPrimary: '#f1f5f9',
+                textSecondary: '#94a3b8',
+                textMuted: '#64748b',
+                titleColor: '#f1f5f9',
+                descColor: '#94a3b8',
+                iconColor: '#fdba74',
+                gradient: 'linear-gradient(135deg, #f97316, #d97706)',
+                shadowGlow: 'rgba(249, 115, 22, 0.15)',
+                bgGradient: 'linear-gradient(135deg, #0f0f1a 0%, #3a2514 100%)',
+                cardBg: '#16162a',
+                cardBorder: '#f97316'
+            },
+            social: {
+                primary: '#10b981',
+                primaryLight: '#6ee7b7',
+                accent: '#059669',
+                bg: '#0f0f1a',
+                bgCard: '#16162a',
+                textPrimary: '#f1f5f9',
+                textSecondary: '#94a3b8',
+                textMuted: '#64748b',
+                titleColor: '#f1f5f9',
+                descColor: '#94a3b8',
+                iconColor: '#6ee7b7',
+                gradient: 'linear-gradient(135deg, #10b981, #059669)',
+                shadowGlow: 'rgba(5, 150, 105, 0.15)',
+                bgGradient: 'linear-gradient(135deg, #0f0f1a 0%, #143d2b 100%)',
+                cardBg: '#16162a',
+                cardBorder: '#10b981'
+            }
+        };
+
+        function setTheme(themeKey) {
+            const theme = themes[themeKey];
+            const root = document.documentElement;
+            const landing = document.querySelector('.landing');
+            
+            root.style.setProperty('--primary', theme.primary);
+            root.style.setProperty('--primary-light', theme.primaryLight);
+            root.style.setProperty('--accent', theme.accent);
+            root.style.setProperty('--bg-dark', theme.bg);
+            root.style.setProperty('--bg-card', theme.bgCard);
+            root.style.setProperty('--text-primary', theme.textPrimary);
+            root.style.setProperty('--text-secondary', theme.textSecondary);
+            root.style.setProperty('--text-muted', theme.textMuted);
+            root.style.setProperty('--gradient-1', theme.gradient);
+            root.style.setProperty('--shadow-glow', theme.shadowGlow);
+            
+            // Update landing elements
+            if (landing) {
+                landing.style.background = theme.bgGradient;
+            }
+            
+            // Update title and subtitle colors
+            const title = document.querySelector('.landing-title');
+            const subtitle = document.querySelector('.landing-subtitle');
+            const footer = document.querySelector('.landing-footer');
+            
+            if (title) title.style.color = theme.titleColor;
+            if (subtitle) subtitle.style.color = theme.textSecondary;
+            if (footer) footer.style.color = theme.textMuted;
+            
+            // Update card styles
+            const cards = document.querySelectorAll('.choice-card');
+            cards.forEach(card => {
+                card.style.background = theme.cardBg;
+                card.style.borderColor = theme.cardBorder;
+                
+                const icon = card.querySelector('.choice-icon');
+                const cardTitle = card.querySelector('.choice-title');
+                const desc = card.querySelector('.choice-desc');
+                const arrow = card.querySelector('.choice-arrow');
+                
+                if (icon) icon.style.color = theme.iconColor;
+                if (cardTitle) cardTitle.style.color = theme.titleColor;
+                if (desc) desc.style.color = theme.descColor;
+                if (arrow) arrow.style.color = theme.iconColor;
+            });
+            
+            // Update landing bg opacity
+            const landingBg = document.querySelector('.landing-bg');
+            if (landingBg) {
+                landingBg.style.opacity = themeKey === 'default' ? '0.3' : '0.6';
+            }
+        }
+
+        // Set default theme on load
+        window.addEventListener('load', () => setTheme('default'));
+
+        // Add hover listeners to choice cards
+        const choiceCards = document.querySelectorAll('.choice-card');
+        const themeMap = {
+            'developer.html': 'developer',
+            'product.html': 'product',
+            'social-media-and-growth.html': 'social'
+        };
+
+        choiceCards.forEach(card => {
+            const href = card.getAttribute('href');
+            const themeKey = themeMap[href] || 'default';
+
+            card.addEventListener('mouseenter', () => setTheme(themeKey));
+            card.addEventListener('mouseleave', () => setTheme('default'));
+        });
+    </script>
+</body>
+</html>
