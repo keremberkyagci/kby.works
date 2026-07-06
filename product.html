@@ -1502,22 +1502,38 @@
         // ── Case Study Data ──
         const caseStudies = {
             odak: {
-                title: "Odak Sınavda",
+                title: "Odak Sınavda — Bir Planlama Uygulaması Değil, Güven Problemi",
                 badge: "Eğitim Teknolojileri",
-                cases: [
-                    {
-                        problem: "Öğrenciler zaman zaman ilerlemelerini gerçeğe uygun raporlamıyor.",
-                        solution: "Öğrencinin beyanına bağlı ilerleme takibi yerine, öğrenmeyi doğrulayan bir değerlendirme mekanizması tasarladım. '5 Yıldız Sistemi' ile her tamamlanan konu yapay zekâ destekli kısa testlerle doğrulanıyor ve öğrencinin konu hâkimiyeti dinamik olarak puanlanıyor. Zaman içinde puanın azalması sayesinde sistem, unutma eğrisini dikkate alarak tekrar önerileri oluşturuyor."
-                    },
-                    {
-                        problem: "Koçlar ise takibi Excel ve defter gibi dağınık araçlarla yürütmek zorunda kalıyor -> bu da haftalık planlama sürecini verimsizleştiriyor.",
-                        solution: "Koçların planlama ve öğrenci takibini tek panel üzerinden yönetebileceği bir yapı tasarladım. Takvim, ders gruplama ve yapay zekâ destekli plan oluşturma özellikleri sayesinde manuel planlama sürecini önemli ölçüde hızlandırmayı hedefledim."
-                    },
-                    {
-                        problem: "Öğrenciler motivasyon kaybı yaşayabiliyor ve zaman yönetimi günümüzün en kritik kaynağı haline geliyor.",
-                        solution: "Öğrencilerin motivasyonlarını sürdürebilmeleri için kişiselleştirilmiş öneriler ve yönlendirmeler sunan yapay zekâ destekli bir rehber geliştirdim. Ayrıca tekrar eden planlama süreçlerini otomatikleştirerek öğrencilerin zamanlarını daha verimli kullanmalarını hedefledim."
-                    }
-                ],
+                content: `
+                    <p>Her şey bir gözlemle başladı. Ben de bir dönem YKS'ye hazırlanan bir öğrenciydim. Çevremdeki arkadaşlarımın büyük bir kısmı koçluk alıyordu. Koçlar haftalık program hazırlıyor, öğrenciler ise hafta boyunca ne kadar çalıştıklarını raporluyordu.</p>
+
+                    <p>Bir süre sonra ilginç bir durum fark ettim. Öğrencilerin çoğu gerçekten çalışmak istemediği için değil, kötü görünmemek için eksiklerini olduğundan daha iyi gösteriyordu. "Bu hafta matematik bitti.", "Çoğunu hallettim.", "Tekrar ettim." Fakat deneme sonuçları aynı şeyi söylemiyordu.</p>
+
+                    <p>O an aklıma şu soru geldi: <strong>Peki ya problem öğrencinin çalışmaması değil, sistemin öğrenmeyi doğrulayamamasıysa?</strong></p>
+
+                    <div class="case-study-item">
+                        <h4>İlk düşündüğüm problem yanlıştı</h4>
+                        <p>Başlangıçta ben de çoğu kişi gibi daha iyi bir planlama uygulaması geliştirmeyi düşündüm. Fakat piyasaya baktığımda zaten onlarca planlama uygulaması olduğunu gördüm. Takvim vardı, To-do list vardı, Pomodoro vardı. Eksik olan şey bunlar değildi. Asıl mikro problem, öğrencinin gerçekten öğrenip öğrenmediğini anlayabilen bir sistemdi.</p>
+                    </div>
+
+                    <div class="case-study-item">
+                        <h4>Güven yerine doğrulama</h4>
+                        <p>Bu düşünce beni farklı bir noktaya götürdü. Koçun öğrenciye güvenmesine gerek kalmamalıydı. Sistem bunu doğrulayabilmeliydi. Böylece <strong>5 Yıldız Sistemi</strong> fikri ortaya çıktı.</p>
+                        <p>Bir öğrenci bir konuyu tamamladığını söylediğinde süreç orada bitmiyordu. Yapay zekâ o konu hakkında kısa bir değerlendirme yapıyor, öğrencinin performansına göre konuya yıldız puanı veriyordu. Zaman geçtikçe bu yıldızlar düşüyor ve bilgi unutulmaya başladığında sistem öğrenciyi tekrar çalışmaya yönlendiriyordu.</p>
+                    </div>
+
+                    <div class="case-study-item">
+                        <h4>İkinci problem: Koçların zamanı</h4>
+                        <p>Koçlarla konuştuğumda başka bir problem daha gördüm. Haftalık program hazırlamak düşündüğümden çok daha fazla zaman alıyordu. Excel dosyaları, defterler, WhatsApp mesajları... Her öğrenci için tekrar tekrar aynı süreç. Bunu otomatikleştirebilir miydik?</p>
+                        <p>Bu sorudan sonra iki panelli yapıyı tasarladım. Bir tarafta öğrenci, diğer tarafta koç ve yapay zekâ destekli planlayıcı. Koç artık sıfırdan program hazırlamak yerine öğrencinin geçmiş performansını inceleyip saniyeler içinde öneri oluşturabiliyordu.</p>
+                    </div>
+
+                    <div class="case-study-item">
+                        <h4>Bu projeden öğrendiklerim</h4>
+                        <p>Bu proje bana önemli bir şey öğretti. İnsanlar çoğu zaman problemin çözümünü söyler. Ama gerçek problemi söylemezler. Başta ben de "öğrencilerin daha iyi bir planlama uygulamasına ihtiyacı var" diye düşünüyordum. Biraz daha gözlem yaptığımda ise asıl ihtiyacın güvenilir takip, doğrulanabilir ilerleme ve sürdürülebilir motivasyon olduğunu fark ettim.</p>
+                        <p>O günden sonra ürün geliştirirken kendime hep ayn soruyu sormaya başladım: <strong>"Kullanıcının söylediği problem mi gerçek problem, yoksa bunun altında başka bir sebep mi var?"</strong></p>
+                    </div>
+                `,
                 tech: ["Flutter", "Riverpod", "Firebase", "Gemini API"]
             },
             reels: {
@@ -1556,13 +1572,14 @@
             const data = caseStudies[projectId];
             if (!data) return;
 
-            modalBody.innerHTML = `
-                <div class="case-study-header">
-                    <span class="case-study-badge">${data.badge}</span>
-                    <h2 class="case-study-title">${data.title}</h2>
-                </div>
+            let contentHtml = '';
 
-                ${data.cases.map((c, index) => `
+            if (data.content) {
+                // Narrative format
+                contentHtml = data.content;
+            } else if (data.cases) {
+                // Structured format
+                contentHtml = data.cases.map((c, index) => `
                     <div class="case-study-item">
                         <h4>Case ${index + 1}</h4>
                         <div class="case-study-pair">
@@ -1576,7 +1593,16 @@
                             </div>
                         </div>
                     </div>
-                `).join('')}
+                `).join('');
+            }
+
+            modalBody.innerHTML = `
+                <div class="case-study-header">
+                    <span class="case-study-badge">Case Study ve Çalışma Sürecim</span>
+                    <h2 class="case-study-title">${data.title}</h2>
+                </div>
+
+                ${contentHtml}
 
                 <div class="case-study-section" style="margin-top: 3rem;">
                     <h4 style="color: var(--primary-light); font-size: 1.1rem; margin-bottom: 1rem;">
