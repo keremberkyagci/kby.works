@@ -736,41 +736,68 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .case-study-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .case-study-section h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
+        .case-study-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
             color: var(--primary-light);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
         }
 
-        .case-study-section p {
-            color: var(--text-secondary);
+        .case-study-item {
+            margin-bottom: 2rem;
+            background: rgba(255,255,255,0.02);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .case-study-item h4 {
+            color: var(--primary-light);
+            font-family: 'Space Grotesk', sans-serif;
             margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .case-study-list {
-            list-style: none;
+        .case-study-pair {
+            display: grid;
+            gap: 1.5rem;
         }
 
-        .case-study-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
+        .problem-box, .solution-box {
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .problem-box {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid #ef4444;
+        }
+
+        .solution-box {
+            background: rgba(34, 197, 94, 0.05);
+            border-left: 4px solid #22c55e;
+        }
+
+        .box-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-box .box-label { color: #f87171; }
+        .solution-box .box-label { color: #4ade80; }
+
+        .box-text {
+            font-size: 0.95rem;
             color: var(--text-secondary);
-        }
-
-        .case-study-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
+            line-height: 1.6;
         }
 
         /* ── Experience ── */
@@ -1477,41 +1504,51 @@
             odak: {
                 title: "Odak Sınavda",
                 badge: "Eğitim Teknolojileri",
-                problem: "Öğrenci koçluğu sürecindeki takip ve planlama verimsizliği. Koçların Excel gibi dağınık araçlarla 20+ öğrenciyi yönetmeye çalışması ve öğrencilerin gerçek ilerlemesini ölçememesi.",
-                solution: "Yapay zeka destekli, çift panelli bir takip platformu. Koç ile öğrenci arasındaki tüm etkileşimi dijitalleştiren ve veri odaklı stratejiler sunan bir ekosistem.",
-                features: [
-                    "<strong>5 Yıldız Sistemi:</strong> İlerlemeyi sadece 'çalıştım' beyanına değil, AI destekli kısa doğrulama testlerine dayandıran dinamik puanlama.",
-                    "<strong>Akıllı Koç Paneli:</strong> Tüm öğrencilerin konu bazlı analizini tek ekranda görme ve AI ile kişiselleştirilmiş haftalık plan üretimi.",
-                    "<strong>Clean Architecture:</strong> Flutter ve Riverpod ile test edilebilir, sürdürülebilir mobil mimari.",
-                    "<strong>Real-time Sync:</strong> Firebase Firestore ile koç ve öğrenci arasında anlık veri akışı."
+                cases: [
+                    {
+                        problem: "Öğrenciler zaman zaman ilerlemelerini gerçeğe uygun raporlamıyor.",
+                        solution: "Öğrencinin beyanına bağlı ilerleme takibi yerine, öğrenmeyi doğrulayan bir değerlendirme mekanizması tasarladım. '5 Yıldız Sistemi' ile her tamamlanan konu yapay zekâ destekli kısa testlerle doğrulanıyor ve öğrencinin konu hâkimiyeti dinamik olarak puanlanıyor. Zaman içinde puanın azalması sayesinde sistem, unutma eğrisini dikkate alarak tekrar önerileri oluşturuyor."
+                    },
+                    {
+                        problem: "Koçlar ise takibi Excel ve defter gibi dağınık araçlarla yürütmek zorunda kalıyor -> bu da haftalık planlama sürecini verimsizleştiriyor.",
+                        solution: "Koçların planlama ve öğrenci takibini tek panel üzerinden yönetebileceği bir yapı tasarladım. Takvim, ders gruplama ve yapay zekâ destekli plan oluşturma özellikleri sayesinde manuel planlama sürecini önemli ölçüde hızlandırmayı hedefledim."
+                    },
+                    {
+                        problem: "Öğrenciler motivasyon kaybı yaşayabiliyor ve zaman yönetimi günümüzün en kritik kaynağı haline geliyor.",
+                        solution: "Öğrencilerin motivasyonlarını sürdürebilmeleri için kişiselleştirilmiş öneriler ve yönlendirmeler sunan yapay zekâ destekli bir rehber geliştirdim. Ayrıca tekrar eden planlama süreçlerini otomatikleştirerek öğrencilerin zamanlarını daha verimli kullanmalarını hedefledim."
+                    }
                 ],
-                tech: ["Flutter", "Riverpod", "Firebase", "Gemini API", "Figma"]
+                tech: ["Flutter", "Riverpod", "Firebase", "Gemini API"]
             },
             reels: {
                 title: "Reels Block",
                 badge: "Dijital Sağlık",
-                problem: "Sosyal medya uygulamalarındaki dikey video (Reels/Shorts) akışlarının yarattığı dijital bağımlılık. Mevcut 'app blocker'ların uygulamayı tamamen kapatması nedeniyle mesajlaşma gibi faydalı özelliklerin de kullanılamaması.",
-                solution: "Uygulamayı tamamen kapatmak yerine, sadece bağımlılık yaratan dikey video ekranlarını tespit edip engelleyen bir 'niş' kısıtlayıcı.",
-                features: [
-                    "<strong>AccessibilityService Entegrasyonu:</strong> Instagram ekran içeriğini gerçek zamanlı analiz ederek Reels sayfasına girişi tespit etme.",
-                    "<strong>WindowManager Overlay:</strong> Tespit anında ekranın üzerine anlık bir engelleyici katman yerleştirme.",
-                    "<strong>Granüler Kontrol:</strong> Kullanıcının normal etkileşimlerine izin verirken sadece dikey akışları hedefleme.",
-                    "<strong>Performans Odaklı:</strong> Arka planda minimum pil tüketimi için optimize edilmiş servis yapısı."
+                cases: [
+                    {
+                        problem: "Sosyal medya uygulamalarındaki dikey video (Reels/Shorts) akışlarının yarattığı dijital bağımlılık.",
+                        solution: "AccessibilityService ile Instagram ekran içeriğini gerçek zamanlı analiz ederek Reels sayfasına girişi tespit eden bir takip sistemi kurguladım."
+                    },
+                    {
+                        problem: "Mevcut 'app blocker'ların uygulamayı tamamen kapatması nedeniyle mesajlaşma gibi faydalı özelliklerin de kullanılamaması.",
+                        solution: "Uygulamayı tamamen kapatmak yerine, sadece bağımlılık yaratan dikey video akışlarını WindowManager overlay ile anlık olarak engelleyen bir katman geliştirdim."
+                    }
                 ],
                 tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
             },
             tytai: {
                 title: "TYT AI Asistanı",
                 badge: "Yapay Zeka / RAG",
-                problem: "Öğrencilerin ders çalışırken karşılaştıkları spesifik sorular için statik kaynaklardan (kitaplar vb.) anlık ve bağlamsal yanıt alamaması.",
-                solution: "Ders kaynaklarını vektörleştirerek öğrenciye kendi kitapları üzerinden cevap veren bir Retrieval-Augmented Generation (RAG) sistemi.",
-                features: [
-                    "<strong>RAG Pipeline:</strong> ChromaDB ve LangChain kullanarak ders içeriklerini semantik olarak indeksleme.",
-                    "<strong>Matematik Odaklı:</strong> LaTeX desteği ve streaming yanıt yapısı ile matematiksel ifadelerin hatasız görüntülenmesi.",
-                    "<strong>FastAPI Backend:</strong> Python tabanlı, yüksek performanslı ve ölçeklenebilir AI servisi.",
-                    "<strong>GPU Destekli:</strong> CUDA (RTX 4050) üzerinde çalışan yerel embedding hesaplama süreçleri."
+                cases: [
+                    {
+                        problem: "Öğrencilerin ders çalışırken karşılaştıkları spesifik sorular için statik kaynaklardan (kitaplar vb.) anlık ve bağlamsal yanıt alamaması.",
+                        solution: "ChromaDB ve LangChain kullanarak ders içeriklerini semantik olarak indeksleyen bir RAG Pipeline kurguladım. Bu sayede öğrenciye kendi kitapları üzerinden cevap veren bir sistem oluşturdum."
+                    },
+                    {
+                        problem: "Matematiksel ifadelerin ve karmaşık formüllerin dijital asistanlar tarafından hatalı veya eksik görüntülenmesi.",
+                        solution: "LaTeX desteği ve streaming yanıt yapısı entegrasyonu ile matematik odaklı, gerçek zamanlı ve görsel olarak hatasız bir deneyim sundum."
+                    }
                 ],
-                tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter", "CUDA"]
+                tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
             }
         };
 
@@ -1525,29 +1562,30 @@
 
             modalBody.innerHTML = `
                 <div class="case-study-header">
-                    <span class="section-tag">${data.badge}</span>
+                    <span class="case-study-badge">${data.badge}</span>
                     <h2 class="case-study-title">${data.title}</h2>
                 </div>
 
-                <div class="case-study-section">
-                    <h4><i class="fas fa-exclamation-circle"></i> Çözülen Problem</h4>
-                    <p>${data.problem}</p>
-                </div>
+                ${data.cases.map((c, index) => `
+                    <div class="case-study-item">
+                        <h4>Case ${index + 1}</h4>
+                        <div class="case-study-pair">
+                            <div class="problem-box">
+                                <span class="box-label">Problem</span>
+                                <p class="box-text">${c.problem}</p>
+                            </div>
+                            <div class="solution-box">
+                                <span class="box-label">Çözüm</span>
+                                <p class="box-text">${c.solution}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
 
-                <div class="case-study-section">
-                    <h4><i class="fas fa-check-circle"></i> Ürün Çözümü</h4>
-                    <p>${data.solution}</p>
-                </div>
-
-                <div class="case-study-section">
-                    <h4><i class="fas fa-star"></i> Öne Çıkan Özellikler</h4>
-                    <ul class="case-study-list">
-                        ${data.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div class="case-study-section">
-                    <h4><i class="fas fa-laptop-code"></i> Kullanılan Teknolojiler</h4>
+                <div class="case-study-section" style="margin-top: 3rem;">
+                    <h4 style="color: var(--primary-light); font-size: 1.1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-laptop-code"></i> Kullanılan Teknolojiler
+                    </h4>
                     <div class="project-tech">
                         ${data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                     </div>
