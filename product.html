@@ -1073,6 +1073,10 @@
             .timeline-dot { left: 4px; }
             .hero { padding: 3rem 0; }
             .section { padding: 3rem 5%; }
+            .reveal {
+                transform: none !important;
+                transition: opacity 0.4s ease !important;
+            }
         }
     </style>
 </head>
@@ -1477,13 +1481,25 @@
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
             revealElements.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                if (top < window.innerHeight - 80) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight - 50) {
                     el.classList.add('active');
                 }
             });
         };
+
+        // Initialize VanillaTilt only on Desktop
+        if (!window.matchMedia("(max-width: 768px)").matches) {
+            // VanillaTilt automatically initializes elements with data-tilt,
+            // but we can manually handle it or let the library do its check.
+            // To be safe, we can remove data-tilt on mobile before it initializes.
+        } else {
+            document.querySelectorAll('[data-tilt]').forEach(el => {
+                el.removeAttribute('data-tilt');
+            });
+        }
 
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
