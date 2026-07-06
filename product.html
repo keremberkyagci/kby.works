@@ -1571,18 +1571,37 @@
                 tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
             },
             tytai: {
-                title: "TYT AI Asistanı",
+                title: "TYT Matematik AI Asistanı — Yapay Zekâyı Kullanmak Değil, Anlamak İstedim",
                 badge: "Yapay Zeka / RAG",
-                cases: [
-                    {
-                        problem: "Öğrencilerin ders çalışırken karşılaştıkları spesifik sorular için statik kaynaklardan (kitaplar vb.) anlık ve bağlamsal yanıt alamaması.",
-                        solution: "ChromaDB ve LangChain kullanarak ders içeriklerini semantik olarak indeksleyen bir RAG Pipeline kurguladım. Bu sayede öğrenciye kendi kitapları üzerinden cevap veren bir sistem oluşturdum."
-                    },
-                    {
-                        problem: "Karmaşık matematiksel ifadelerin ve formüllerin dijital asistanlar tarafından hatalı görüntülenmesi veya metin tabanlı yanıtların yetersiz kalması.",
-                        solution: "LaTeX desteği ve streaming yanıt yapısı entegrasyonu ile matematik odaklı, gerçek zamanlı ve görsel olarak hatasız bir deneyim sundum. Flutter istemcisi ile FastAPI tabanlı Python backend geliştirerek uçtan uca (end-to-end) bir ürün deneyimi kurguladım."
-                    }
-                ],
+                content: `
+                    <p>"Bunu ben nasıl geliştirirdim?" Yapay zekâ araçlarını uzun zamandır kullanıyordum. ChatGPT, Gemini ve benzeri modeller günlük hayatımın bir parçası olmuştu. Fakat bir noktadan sonra kendime farklı bir soru sormaya başladım: <strong>Bu sistemler nasıl çalışıyor?</strong></p>
+
+                    <p>API'yi çağırıp cevap almak benim için yeterli değildi. Asıl merak ettiğim şey, bu modellerin belirli bir konuda nasıl uzmanlaştırıldığı ve kullanıcıya neden daha doğru cevaplar verebildiğiydi. Hazır cevapları kullanmak istemedim. Ben bir teknolojiyi en iyi, onu kullanırken değil; onu geliştirirken öğreniyorum.</p>
+
+                    <div class="case-study-item">
+                        <h4>Neden TYT Matematik?</h4>
+                        <p>Bu tamamen bilinçli bir karardı. Hem sınav sürecini daha önce yaşamıştım hem de doğru cevap verebilmesi için belirli bir bilgi alanına odaklanan bir sistem kurmak istiyordum. Amacım "her şeyi bilen" değil, belirli bir konuda güvenilir cevaplar verebilen bir sistem tasarlamaktı.</p>
+                    </div>
+
+                    <div class="case-study-item">
+                        <h4>İlk öğrendiğim şey: RAG Mimarisi</h4>
+                        <p>İlk başta doğrudan soru göndermenin yeterli olacağını düşündüm. Fakat modelin genel bilgisi yerine belirli kaynaklara dayanmasını istiyordum. İşte burada <strong>RAG (Retrieval-Augmented Generation)</strong> mimarisiyle tanıştım.</p>
+                        <p>Ders kitaplarını vektörleştirerek ChromaDB üzerinde sakladım. Kullanıcı soru sorduğunda sistem önce ilgili içeriği buluyor, ardından bu bağlamı Gemini'ye ileterek cevap üretiyordu. Cevabın hangi bilgiye dayanacağını kontrol edebilmek en heyecan verici kısımdı.</p>
+                    </div>
+
+                    <div class="case-study-item">
+                        <h4>Bu projeden öğrendiklerim</h4>
+                        <p>Sadece bir uygulama değil, modern yapay zekâ sistemlerinin temel yapı taşlarını deneyimledim:</p>
+                        <ul class="case-study-list" style="margin-top: 1rem;">
+                            <li>FastAPI ile Python backend geliştirdim.</li>
+                            <li>LangChain kullanarak yapay zekâ akışını yönettim.</li>
+                            <li>ChromaDB ile vektör tabanlı bilgi erişimi sağladım.</li>
+                            <li>Flutter ile mobil istemciyi geliştirerek tüm sistemi uçtan uca bağladım.</li>
+                        </ul>
+                    </div>
+
+                    <p>Bu proje bana şu düşünceyi kazandırdı: <strong>Bir teknolojiyi gerçekten öğrenmek istiyorsam, onu kullanmak yerine inşa etmeliyim.</strong> Hedefim sadece uygulama çıkarmak değil, yapay zekâ ajanlarının nasıl çalıştığını ve bir kullanıcı deneyimine nasıl dönüştürüldüğünü anlamaktı.</p>
+                `,
                 tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
             }
         };
