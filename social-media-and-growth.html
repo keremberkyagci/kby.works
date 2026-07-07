@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7DRV8KGKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7DRV8KGKK');
+    </script>
     <style>
         :root {
             --primary: #10b981;
@@ -152,6 +161,37 @@
             color: var(--text-primary);
             font-size: 1.8rem;
             cursor: pointer;
+        }
+
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            display: flex;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 3px;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+        .lang-btn {
+            padding: 4px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
         }
 
         /* ── Hero ── */
@@ -943,7 +983,7 @@
     </div>
 
     <nav id="navbar">
-        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY.</div>
+        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY</div>
         <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="#home">Sayfaya Git</a></li>
@@ -953,6 +993,10 @@
             <li><a href="#experience">Eğitim & Deneyim</a></li>
             <li><a href="#contact">İletişim</a></li>
         </ul>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
         <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     </nav>
 
@@ -1286,7 +1330,7 @@ Uçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziya
     </section>
 
     <footer>
-        <div class="footer-brand">KBY.</div>
+        <div class="footer-brand">KBY</div>
         <p class="footer-desc">
             Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici.
         </p>
@@ -1377,6 +1421,308 @@ Uçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziya
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            });
+        });
+
+        // ── Language Toggle Logic ──
+        const translations = {
+            tr: {
+                title: "Kerem Berk Yağcı | Sosyal Medya Uzmanı",
+                mobileHome: "Ana Sayfa",
+                mobileAbout: "Hakkımda",
+                mobileSkills: "Beceriler",
+                mobileProjects: "Şirketler",
+                mobileExperience: "Deneyim & Eğitim",
+                mobileContact: "İletişim",
+                navHome: "Ana Sayfa",
+                navPage: "Sayfaya Git",
+                navAbout: "Hakkımda",
+                navSkills: "Beceriler",
+                navProjects: "Şirketler",
+                navExperience: "Eğitim & Deneyim",
+                navContact: "İletişim",
+                badge: "Staj & İşbirliği için Müsait",
+                heroTitle: "Merhaba, Ben ",
+                heroSubtitle: "İstanbul Üniversitesi Bilgisayar Bilimleri 3. sınıf öğrencisiyim. Markalar için dijital büyüme ortağıyım. Yapay zeka ile görsel/video kurgusunu, Meta performans reklamları ve e-ticaret altyapı yönetimi ile birleştirerek uçtan uca dijital dönüşüm süreçlerini yönetiyorum.",
+                btnProjects: "Çalıştığım şirketleri gör",
+                btnContact: "İletişime Geç",
+                sectionTagAbout: "Hakkımda",
+                sectionTitleAbout: "Kimim Ben?",
+                sectionDescAbout: "Kullanıcı ihtiyacını temel alan bir ürün geliştirici adayı.",
+                aboutTitle: "Sosyal Medya Uzmanı ve Danışman",
+                aboutP1: "Sosyal Medya ve İçerik Yönetimi\nYapay Zeka Destekli İçerik Üretimi: Moda, mobilya ve çeşitli e-ticaret ürün grupları için üretken yapay zeka destekli, katalog kalitesinde profesyonel görselleştirme.\n\nDinamik Video Kurgu: Marka kimliğine uygun, etkileşim odaklı sinematik Reels ve tanıtım videolarının tasarlanması.\n\nKapsamlı Hesap Yönetimi: Sosyal medya varlıklarının uçtan uca yönetilmesi, marka dilinin oluşturulması ve büyüme odaklı içerik takvimlerinin planlanması.",
+                aboutP2: "Performans Pazarlama (Performance Marketing)\nReklam Kampanyası Yönetimi: Meta Business üzerinden hedef kitle odaklı reklam stratejilerinin kurgulanması, A/B testlerinin yapılması ve kampanyaların yürütülmesi.\n\nVeri Odaklı Optimizasyon: Dönüşüm oranlarını (ROI/ROAS) maksimize etmek üzere reklam analizlerinin yapılması ve bütçenin en verimli şekilde yönetilmesi.",
+                aboutP3: "Growth & E-Ticaret Çözümleri\nE-Ticaret Altyapı Kurulumu: Ticimax ve WordPress gibi platformlar üzerinde, kullanıcı deneyimi ve dönüşüm oranları optimize edilmiş e-ticaret sitelerinin tasarlanması.\n\nUçtan Uca Dijital Büyüme (Growth): Yalnızca trafik çekmekle kalmayıp, ziyaretçileri müşteriye dönüştürecek satış hunilerinin (funnel) inşa edilmesi ve dijital pazarlama süreçlerinin entegre edilmesi.",
+                infoUni: "Üniversite",
+                infoUniVal: "İstanbul Üniversitesi, Bilgisayar Bilimleri (2024-2028)",
+                infoHigh: "Lise",
+                infoHighVal: "Kemal Atatürk Anadolu Lisesi (2023)",
+                sectionTagSkills: "Beceriler",
+                sectionTitleSkills: "Pazarlama Teknoloji Stack'i",
+                sectionDescSkills: "Dijital pazarlama ve growth stratejisinde kullanılan araçlar ve teknolojiler.",
+                skill1: "Dijital Pazarlama Araçları",
+                skill2: "Kreatif & Yapay Zeka (AI Stack)",
+                skill3: "Growth & Strateji",
+                skill4: "Operasyon & Yönetim",
+                sectionTagProjects: "Şirketler",
+                sectionTitleProjects: "Çalıştığım Şirketler",
+                proj1Badge: "Kurucu Ortak",
+                proj1Title: "Erva Tekstil (Erva Home)",
+                proj1Desc: "Premium ev tekstili markası için e-ticaret altyapısı, dijital pazarlama stratejisi ve içerik üretimi yönetimi.",
+                proj2Badge: "Kurucu Ortak",
+                proj2Title: "Beyoğlu Abiye",
+                proj2Desc: "Prestij abiyelik markası için sosyal medya yönetimi, kreatif içerik üretimi ve büyüme odaklı stratejiler geliştirme.",
+                sectionTagExp: "Gelişim",
+                sectionTitleExp: "Programlar ve Eğitimler",
+                sectionTagContact: "İletişim",
+                sectionTitleContact: "Bana Ulaşın",
+                sectionDescContact: "Staj fırsatları, projeler veya işbirlikleri için iletişime geçebilirsiniz.",
+                contactTitle: "İletişime Geçelim",
+                contactDesc: "Yeni bir ürün mü geliştiriyorsunuz? Bir AI entegrasyonu mu planlıyorsunuz? Ya da sadece merhaba mı demek istiyorsunuz? En kısa sürede dönerim.",
+                contactPhone: "Telefon",
+                contactEmail: "E-posta",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici.",
+                footerCopy: "© 2026 Kerem Berk Yağcı. ❤ ile yapıldı.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "E-posta"
+            },
+            en: {
+                title: "Kerem Berk Yağcı | Social Media Specialist",
+                mobileHome: "Home",
+                mobileAbout: "About",
+                mobileSkills: "Skills",
+                mobileProjects: "Companies",
+                mobileExperience: "Experience & Education",
+                mobileContact: "Contact",
+                navHome: "Home",
+                navPage: "Page",
+                navAbout: "About",
+                navSkills: "Skills",
+                navProjects: "Companies",
+                navExperience: "Education & Experience",
+                navContact: "Contact",
+                badge: "Open for Internships & Collaboration",
+                heroTitle: "Hi, I'm ",
+                heroSubtitle: "I'm a 3rd-year Computer Science student at Istanbul University. I'm a digital growth partner for brands. I combine AI-powered visual/video editing with Meta performance ads and e-commerce infrastructure management to drive end-to-end digital transformation.",
+                btnProjects: "View Companies I've Worked With",
+                btnContact: "Get in Touch",
+                sectionTagAbout: "About",
+                sectionTitleAbout: "Who Am I?",
+                sectionDescAbout: "A product developer candidate centered on user needs.",
+                aboutTitle: "Social Media Specialist & Consultant",
+                aboutP1: "Social Media & Content Management\nAI-Powered Content Production: Generative AI-driven, catalog-quality professional visualization for fashion, furniture, and various e-commerce product categories.\n\nDynamic Video Editing: Designing engagement-focused cinematic Reels and promotional videos aligned with brand identity.\n\nComprehensive Account Management: End-to-end management of social media assets, brand voice development, and growth-focused content calendar planning.",
+                aboutP2: "Performance Marketing\nAd Campaign Management: Building target audience-focused advertising strategies via Meta Business, running A/B tests, and executing campaigns.\n\nData-Driven Optimization: Analyzing ad performance to maximize conversion rates (ROI/ROAS) and managing budgets efficiently.",
+                aboutP3: "Growth & E-Commerce Solutions\nE-Commerce Infrastructure Setup: Designing optimized e-commerce sites on platforms like Ticimax and WordPress with focus on UX and conversion rates.\n\nEnd-to-End Digital Growth: Building sales funnels that convert visitors into customers, integrating digital marketing processes beyond just driving traffic.",
+                infoUni: "University",
+                infoUniVal: "Istanbul University, Computer Science (2024-2028)",
+                infoHigh: "High School",
+                infoHighVal: "Kemal Atatürk Anatolian High School (2023)",
+                sectionTagSkills: "Skills",
+                sectionTitleSkills: "Marketing Tech Stack",
+                sectionDescSkills: "Tools and technologies used in digital marketing and growth strategy.",
+                skill1: "Digital Marketing Tools",
+                skill2: "Creative & AI Stack",
+                skill3: "Growth & Strategy",
+                skill4: "Operations & Management",
+                sectionTagProjects: "Companies",
+                sectionTitleProjects: "Companies I've Worked With",
+                proj1Badge: "Co-Founder",
+                proj1Title: "Erva Tekstil (Erva Home)",
+                proj1Desc: "E-commerce infrastructure, digital marketing strategy, and content production management for a premium home textiles brand.",
+                proj2Badge: "Co-Founder",
+                proj2Title: "Beyoğlu Abiye",
+                proj2Desc: "Social media management, creative content production, and growth-focused strategy development for a prestige evening wear brand.",
+                proj1h1: "<strong>E-Commerce Infrastructure:</strong> Managed the setup and technical configuration of the e-commerce site on the Ticimax platform",
+                proj1h2: "<strong>Legal & Operational:</strong> Prepared KVKK compliance content and configured platform settings",
+                proj1h3: "<strong>Brand Growth:</strong> Developed digital marketing strategies and managed ad planning",
+                proj1h4: "<strong>Content Production:</strong> Social media content strategy, video and photo shoots, AI-powered editing",
+                proj2h1: "<strong>Social Media Management:</strong> Managed content strategy and account management processes for the Instagram account",
+                proj2h2: "<strong>Creative Content Production:</strong> Planned photo shoots and produced engaging videos using AI tools",
+                proj2h3: "<strong>Growth-Oriented Strategy:</strong> Active management and optimization to increase social media growth and engagement rates",
+                sectionTagExp: "Development",
+                sectionTitleExp: "Programs & Education",
+                sectionTagContact: "Contact",
+                sectionTitleContact: "Get in Touch",
+                sectionDescContact: "Feel free to reach out for internship opportunities, projects, or collaborations.",
+                contactTitle: "Let's Connect",
+                contactDesc: "Building a new product? Planning an AI integration? Or just want to say hello? I'll get back to you as soon as possible.",
+                contactPhone: "Phone",
+                contactEmail: "Email",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "A product developer who starts product decisions from user needs and thinks through both technical and business sides together.",
+                footerCopy: "© 2026 Kerem Berk Yağcı. Made with ❤.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "Email"
+            }
+        };
+
+        function applyLang(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.documentElement.lang = lang;
+            document.title = t.title;
+
+            // Mobile menu
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            const mobileTexts = [t.mobileHome, t.mobileAbout, t.mobileSkills, t.mobileProjects, t.mobileExperience, t.mobileContact];
+            mobileLinks.forEach((link, i) => { if (mobileTexts[i]) link.textContent = mobileTexts[i]; });
+
+            // Nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const navTexts = [t.navHome, t.navPage, t.navAbout, t.navSkills, t.navProjects, t.navExperience, t.navContact];
+            navLinks.forEach((link, i) => { if (navTexts[i]) link.textContent = navTexts[i]; });
+
+            // Hero
+            const badge = document.querySelector('.hero-badge');
+            if (badge) { const badgeText = badge.childNodes[2]; if (badgeText) badgeText.textContent = ' ' + t.badge; }
+            const heroH1 = document.querySelector('.hero h1');
+            if (heroH1) heroH1.innerHTML = t.heroTitle + '<span class="gradient-text">Kerem Berk Yağcı</span>';
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+            const heroBtns = document.querySelectorAll('.hero-buttons .btn');
+            if (heroBtns.length >= 2) {
+                const btn1 = heroBtns[0].querySelector('i');
+                if (btn1) heroBtns[0].innerHTML = btn1.outerHTML + ' ' + t.btnProjects;
+                const btn2 = heroBtns[1].querySelector('i');
+                if (btn2) heroBtns[1].innerHTML = btn2.outerHTML + ' ' + t.btnContact;
+            }
+
+            // Section headers
+            const sectionTags = document.querySelectorAll('.section-tag');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const sectionDescs = document.querySelectorAll('.section-desc');
+            if (sectionTags.length >= 5) {
+                sectionTags[0].textContent = t.sectionTagAbout;
+                sectionTags[1].textContent = t.sectionTagSkills;
+                sectionTags[2].textContent = t.sectionTagProjects;
+                sectionTags[3].textContent = t.sectionTagExp;
+                sectionTags[4].textContent = t.sectionTagContact;
+            }
+            if (sectionTitles.length >= 5) {
+                sectionTitles[0].textContent = t.sectionTitleAbout;
+                sectionTitles[1].textContent = t.sectionTitleSkills;
+                sectionTitles[2].textContent = t.sectionTitleProjects;
+                sectionTitles[3].textContent = t.sectionTitleExp;
+                sectionTitles[4].textContent = t.sectionTitleContact;
+            }
+            if (sectionDescs.length >= 4) {
+                sectionDescs[0].textContent = t.sectionDescAbout;
+                sectionDescs[1].textContent = t.sectionDescSkills;
+                sectionDescs[2].textContent = t.sectionDescProjects;
+                sectionDescs[3].textContent = t.sectionDescExp;
+                sectionDescs[4].textContent = t.sectionDescContact;
+            }
+
+            // About
+            const aboutTitles = document.querySelectorAll('.about-content h3');
+            if (aboutTitles.length >= 1) aboutTitles[0].textContent = t.aboutTitle;
+            const aboutParagraphs = document.querySelectorAll('.about-content > p');
+            if (aboutParagraphs.length >= 3) {
+                aboutParagraphs[0].textContent = t.aboutP1;
+                aboutParagraphs[1].textContent = t.aboutP2;
+                aboutParagraphs[2].textContent = t.aboutP3;
+            }
+            const infoItems = document.querySelectorAll('.info-item');
+            if (infoItems.length >= 2) {
+                const uniStrong = infoItems[0].querySelector('strong');
+                const uniSpan = infoItems[0].querySelector('span');
+                if (uniStrong) uniStrong.textContent = t.infoUni;
+                if (uniSpan) uniSpan.textContent = t.infoUniVal;
+                const highStrong = infoItems[1].querySelector('strong');
+                const highSpan = infoItems[1].querySelector('span');
+                if (highStrong) highStrong.textContent = t.infoHigh;
+                if (highSpan) highSpan.textContent = t.infoHighVal;
+            }
+
+            // Skills
+            const skillTitles = document.querySelectorAll('.skill-card h3');
+            if (skillTitles.length >= 4) {
+                skillTitles[0].textContent = t.skill1;
+                skillTitles[1].textContent = t.skill2;
+                skillTitles[2].textContent = t.skill3;
+                skillTitles[3].textContent = t.skill4;
+            }
+
+            // Projects
+            const projectBadges = document.querySelectorAll('.project-badge');
+            const projectTitles = document.querySelectorAll('.project-header > h3');
+            const projectDescs = document.querySelectorAll('.project-body > p');
+            if (projectBadges.length >= 2) {
+                projectBadges[0].innerHTML = '<i class="fas fa-briefcase"></i> ' + t.proj1Badge;
+                projectBadges[1].innerHTML = '<i class="fas fa-briefcase"></i> ' + t.proj2Badge;
+            }
+            if (projectTitles.length >= 2) {
+                projectTitles[0].textContent = t.proj1Title;
+                projectTitles[1].textContent = t.proj2Title;
+            }
+            if (projectDescs.length >= 2) {
+                projectDescs[0].textContent = t.proj1Desc;
+                projectDescs[1].textContent = t.proj2Desc;
+            }
+
+            // Project highlights
+            const allHighlights = document.querySelectorAll('.project-highlights');
+            if (allHighlights.length >= 2) {
+                const h1 = allHighlights[0].querySelectorAll('li');
+                if (h1.length >= 4) {
+                    h1[0].innerHTML = t.proj1h1;
+                    h1[1].innerHTML = t.proj1h2;
+                    h1[2].innerHTML = t.proj1h3;
+                    h1[3].innerHTML = t.proj1h4;
+                }
+                const h2 = allHighlights[1].querySelectorAll('li');
+                if (h2.length >= 3) {
+                    h2[0].innerHTML = t.proj2h1;
+                    h2[1].innerHTML = t.proj2h2;
+                    h2[2].innerHTML = t.proj2h3;
+                }
+            }
+
+            // Contact
+            const contactTitles = document.querySelectorAll('.contact-info h3');
+            if (contactTitles.length >= 1) contactTitles[0].textContent = t.contactTitle;
+            const contactDesc = document.querySelector('.contact-info > p');
+            if (contactDesc) contactDesc.textContent = t.contactDesc;
+            const contactLinkLabels = document.querySelectorAll('.contact-link strong');
+            if (contactLinkLabels.length >= 4) {
+                contactLinkLabels[0].textContent = t.contactPhone;
+                contactLinkLabels[1].textContent = t.contactEmail;
+                contactLinkLabels[2].textContent = t.contactLinkedin;
+                contactLinkLabels[3].textContent = t.contactGithub;
+            }
+
+            // Footer
+            const footerDesc = document.querySelector('.footer-desc');
+            if (footerDesc) footerDesc.textContent = t.footerDesc;
+            const footerCopy = document.querySelector('.footer-copy');
+            if (footerCopy) footerCopy.innerHTML = t.footerCopy;
+            const footerTitles = document.querySelectorAll('.footer-social a');
+            if (footerTitles.length >= 3) {
+                footerTitles[0].title = t.footerTitleGithub;
+                footerTitles[1].title = t.footerTitleLinkedin;
+                footerTitles[2].title = t.footerTitleEmail;
+            }
+
+            // Toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        const savedLang = localStorage.getItem('preferredLang') || 'tr';
+        applyLang(savedLang);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyLang(btn.dataset.lang);
             });
         });
     </script>

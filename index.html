@@ -10,6 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7DRV8KGKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7DRV8KGKK');
+    </script>
     <style>
         /* ── Loading Splash Screen ── */
         .splash {
@@ -134,9 +143,60 @@
             0%   { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100000;
+            display: flex;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 3px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: background 0.4s ease;
+        }
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            color: #6b7280;
+        }
+        .lang-btn.active {
+            background: #6366f1;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+        .lang-btn:hover:not(.active) {
+            color: #374151;
+        }
+        /* Dark mode for lang toggle when hovering developer/product/social cards */
+        .lang-toggle.dark {
+            background: rgba(22, 22, 42, 0.9);
+        }
+        .lang-toggle.dark .lang-btn {
+            color: #94a3b8;
+        }
+        .lang-toggle.dark .lang-btn:hover:not(.active) {
+            color: #f1f5f9;
+        }
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle" id="langToggle">
+        <button class="lang-btn active" data-lang="tr">TR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
     <!-- Loading Splash Screen -->
     <div class="splash" id="splash">
         <div class="splash-logo">kby.works</div>
@@ -380,6 +440,106 @@
 
             card.addEventListener('mouseenter', () => setTheme(themeKey));
             card.addEventListener('mouseleave', () => setTheme('default'));
+        });
+
+        // ── Language Toggle Logic ──
+        const translations = {
+            tr: {
+                metaDesc: "kby.works - Hoş Geldiniz",
+                title: "Hangi tarafımı görmek istersin?",
+                subtitle: "Bir alan seç ve çalışmalarımı keşfet",
+                card1Title: "Yazılım Geliştirici",
+                card1Desc: "Web, mobil ve backend projeleri, açık kaynak katkıları ve teknik yetenekler",
+                card2Title: "Product",
+                card2Desc: "Ürün yönetimi, strateji, kullanıcı deneyimi ve çözüm odaklı yaklaşımlar",
+                card3Title: "Social Media & Growth",
+                card3Desc: "Dijital pazarlama, içerik üretimi, marka yönetimi ve sosyal medya stratejileri",
+                footer: "© 2026 kby.works"
+            },
+            en: {
+                metaDesc: "kby.works - Welcome",
+                title: "Which side of me would you like to see?",
+                subtitle: "Pick a field and explore my work",
+                card1Title: "Software Developer",
+                card1Desc: "Web, mobile, and backend projects, open-source contributions, and technical skills",
+                card2Title: "Product Manager",
+                card2Desc: "Product management, strategy, user experience, and solution-oriented approaches",
+                card3Title: "Social Media & Growth",
+                card3Desc: "Digital marketing, content creation, brand management, and social media strategies",
+                footer: "© 2026 kby.works"
+            }
+        };
+
+        function applyLang(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            // Update meta description
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.content = t.metaDesc;
+
+            // Update page title
+            document.title = 'kby.works';
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Update main text
+            const titleEl = document.querySelector('.landing-title');
+            const subtitleEl = document.querySelector('.landing-subtitle');
+            const footerEl = document.querySelector('.landing-footer span');
+            if (titleEl) titleEl.textContent = t.title;
+            if (subtitleEl) subtitleEl.textContent = t.subtitle;
+            if (footerEl) footerEl.textContent = t.footer;
+
+            // Update cards
+            const cards = document.querySelectorAll('.choice-card');
+            if (cards.length >= 3) {
+                const cardTitles = cards[0].querySelector('.choice-title');
+                const cardDescs = cards[0].querySelector('.choice-desc');
+                if (cardTitles) cardTitles.textContent = t.card1Title;
+                if (cardDescs) cardDescs.textContent = t.card1Desc;
+
+                const cardTitles2 = cards[1].querySelector('.choice-title');
+                const cardDescs2 = cards[1].querySelector('.choice-desc');
+                if (cardTitles2) cardTitles2.textContent = t.card2Title;
+                if (cardDescs2) cardDescs2.textContent = t.card2Desc;
+
+                const cardTitles3 = cards[2].querySelector('.choice-title');
+                const cardDescs3 = cards[2].querySelector('.choice-desc');
+                if (cardTitles3) cardTitles3.textContent = t.card3Title;
+                if (cardDescs3) cardDescs3.textContent = t.card3Desc;
+            }
+
+            // Update toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Dark mode for lang toggle on card hover
+        choiceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                document.getElementById('langToggle').classList.add('dark');
+            });
+            card.addEventListener('mouseleave', () => {
+                document.getElementById('langToggle').classList.remove('dark');
+            });
+        });
+
+        // Initialize language
+        const savedLang = localStorage.getItem('preferredLang') || 'tr';
+        applyLang(savedLang);
+
+        // Add click listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                applyLang(lang);
+            });
         });
     </script>
 </body>

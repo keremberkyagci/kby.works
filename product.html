@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7DRV8KGKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7DRV8KGKK');
+    </script>
     <style>
         :root {
             --primary: #f97316;
@@ -152,6 +161,37 @@
             color: var(--text-primary);
             font-size: 1.8rem;
             cursor: pointer;
+        }
+
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            display: flex;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 3px;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+        .lang-btn {
+            padding: 4px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+        }
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
         }
 
         /* ── Hero ── */
@@ -1095,7 +1135,7 @@
 
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY.</div>
+        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY</div>
         <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="#home">Sayfaya Git</a></li>
@@ -1105,6 +1145,10 @@
             <li><a href="#experience">Eğitim & Deneyim</a></li>
             <li><a href="#contact">İletişim</a></li>
         </ul>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
         <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     </nav>
 
@@ -1424,7 +1468,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-brand">KBY.</div>
+        <div class="footer-brand">KBY</div>
         <p class="footer-desc">
             Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici.
         </p>
@@ -1490,11 +1534,8 @@
             });
         };
 
-        // Initialize VanillaTilt only on Desktop
         if (!window.matchMedia("(max-width: 768px)").matches) {
-            // VanillaTilt automatically initializes elements with data-tilt,
-            // but we can manually handle it or let the library do its check.
-            // To be safe, we can remove data-tilt on mobile before it initializes.
+            // VanillaTilt auto-init
         } else {
             document.querySelectorAll('[data-tilt]').forEach(el => {
                 el.removeAttribute('data-tilt');
@@ -1517,161 +1558,108 @@
 
         // ── Case Study Data ──
         const caseStudies = {
-            odak: {
-                title: "Odak Sınavda — Bir Planlama Uygulaması Değil, Güven Problemi",
-                badge: "Eğitim Teknolojileri",
-                content: `
-                    <p>Her şey bir gözlemle başladı. Ben de bir dönem YKS'ye hazırlanan bir öğrenciydim. Çevremdeki arkadaşlarımın büyük bir kısmı koçluk alıyordu. Koçlar haftalık program hazırlıyor, öğrenciler ise hafta boyunca ne kadar çalıştıklarını raporluyordu.</p>
-
-                    <p>Bir süre sonra ilginç bir durum fark ettim. Öğrencilerin çoğu gerçekten çalışmak istemediği için değil, kötü görünmemek için eksiklerini olduğundan daha iyi gösteriyordu. "Bu hafta matematik bitti.", "Çoğunu hallettim.", "Tekrar ettim." Fakat deneme sonuçları aynı şeyi söylemiyordu.</p>
-
-                    <p>O an aklıma şu soru geldi: <strong>Peki ya problem öğrencinin çalışmaması değil, sistemin öğrenmeyi doğrulayamamasıysa?</strong></p>
-
-                    <div class="case-study-item">
-                        <h4>İlk düşündüğüm problem yanlıştı</h4>
-                        <p>Başlangıçta ben de çoğu kişi gibi daha iyi bir planlama uygulaması geliştirmeyi düşündüm. Fakat piyasaya baktığımda zaten onlarca planlama uygulaması olduğunu gördüm. Takvim vardı, To-do list vardı, Pomodoro vardı. Eksik olan şey bunlar değildi. Asıl mikro problem, öğrencinin gerçekten öğrenip öğrenmediğini anlayabilen bir sistemdi.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Güven yerine doğrulama</h4>
-                        <p>Bu düşünce beni farklı bir noktaya götürdü. Koçun öğrenciye güvenmesine gerek kalmamalıydı. Sistem bunu doğrulayabilmeliydi. Böylece <strong>5 Yıldız Sistemi</strong> fikri ortaya çıktı.</p>
-                        <p>Bir öğrenci bir konuyu tamamladığını söylediğinde süreç orada bitmiyordu. Yapay zekâ o konu hakkında kısa bir değerlendirme yapıyor, öğrencinin performansına göre konuya yıldız puanı veriyordu. Zaman geçtikçe bu yıldızlar düşüyor ve bilgi unutulmaya başladığında sistem öğrenciyi tekrar çalışmaya yönlendiriyordu.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>İkinci problem: Koçların zamanı</h4>
-                        <p>Koçlarla konuştuğumda başka bir problem daha gördüm. Haftalık program hazırlamak düşündüğümden çok daha fazla zaman alıyordu. Excel dosyaları, defterler, WhatsApp mesajları... Her öğrenci için tekrar tekrar aynı süreç. Bunu otomatikleştirebilir miydik?</p>
-                        <p>Bu sorudan sonra iki panelli yapıyı tasarladım. Bir tarafta öğrenci, diğer tarafta koç ve yapay zekâ destekli planlayıcı. Koç artık sıfırdan program hazırlamak yerine öğrencinin geçmiş performansını inceleyip saniyeler içinde öneri oluşturabiliyordu.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Bu projeden öğrendiklerim</h4>
-                        <p>Bu proje bana önemli bir şey öğretti. İnsanlar çoğu zaman problemin çözümünü söyler. Ama gerçek problemi söylemezler. Başta ben de "öğrencilerin daha iyi bir planlama uygulamasına ihtiyacı var" diye düşünüyordum. Biraz daha gözlem yaptığımda ise asıl ihtiyacın güvenilir takip, doğrulanabilir ilerleme ve sürdürülebilir motivasyon olduğunu fark ettim.</p>
-                        <p>O günden sonra ürün geliştirirken kendime hep ayn soruyu sormaya başladım: <strong>"Kullanıcının söylediği problem mi gerçek problem, yoksa bunun altında başka bir sebep mi var?"</strong></p>
-                    </div>
-                `,
-                tech: ["Flutter", "Riverpod", "Firebase", "Gemini API"]
+            tr: {
+                odak: {
+                    title: "Odak Sınavda — Bir Planlama Uygulaması Değil, Güven Problemi",
+                    badge: "Eğitim Teknolojileri",
+                    content: `
+                        <p>Her şey bir gözlemle başladı. Ben de bir dönem YKS'ye hazırlanan bir öğrenciydim. Çevremdeki arkadaşlarımın büyük bir kısmı koçluk alıyordu. Koçlar haftalık program hazırlıyor, öğrenciler ise hafta boyunca ne kadar çalıştıklarını raporluyordu.</p>
+                        <p>Bir süre sonra ilginç bir durum fark ettim. Öğrencilerin çoğu gerçekten çalışmak istemediği için değil, kötü görünmemek için eksiklerini olduğundan daha iyi gösteriyordu. "Bu hafta matematik bitti.", "Çoğunu hallettim.", "Tekrar ettim." Fakat deneme sonuçları aynı şeyi söylemiyordu.</p>
+                        <p>O an aklıma şu soru geldi: <strong>Peki ya problem öğrencinin çalışmaması değil, sistemin öğrenmeyi doğrulayamamasıysa?</strong></p>
+                        <div class="case-study-item"><h4>İlk düşündüğüm problem yanlıştı</h4><p>Başlangıçta ben de çoğu kişi gibi daha iyi bir planlama uygulaması geliştirmeyi düşündüm. Fakat piyasaya baktığımda zaten onlarca planlama uygulaması olduğunu gördüm. Takvim vardı, To-do list vardı, Pomodoro vardı. Eksik olan şey bunlar değildi. Asıl mikro problem, öğrencinin gerçekten öğrenip öğrenmediğini anlayabilen bir sistemdi.</p></div>
+                        <div class="case-study-item"><h4>Güven yerine doğrulama</h4><p>Bu düşünce beni farklı bir noktaya götürdü. Koçun öğrenciye güvenmesine gerek kalmamalıydı. Sistem bunu doğrulayabilmeliydi. Böylece <strong>5 Yıldız Sistemi</strong> fikri ortaya çıktı.</p><p>Bir öğrenci bir konuyu tamamladığını söylediğinde süreç orada bitmiyordu. Yapay zekâ o konu hakkında kısa bir değerlendirme yapıyor, öğrencinin performansına göre konuya yıldız puanı veriyordu.</p></div>
+                        <div class="case-study-item"><h4>İkinci problem: Koçların zamanı</h4><p>Koçlarla konuştuğumda başka bir problem daha gördüm. Haftalık program hazırlamak düşündüğümden çok daha fazla zaman alıyordu.</p></div>
+                        <div class="case-study-item"><h4>Bu projeden öğrendiklerim</h4><p>Bu proje bana önemli bir şey öğretti. İnsanlar çoğu zaman problemin çözümünü söyler. Ama gerçek problemi söylemezler.</p></div>
+                    `,
+                    tech: ["Flutter", "Riverpod", "Firebase", "Gemini API"]
+                },
+                reels: {
+                    title: "Reels Block — İnsanlar Sosyal Medya Bağımlısı Değil",
+                    badge: "Dijital Sağlık",
+                    content: `
+                        <p>Herkes aynı problemi yanlış tanımlıyordu. Bir dönem telefon kullanımımı azaltmaya çalışıyordum. Karşıma çıkan neredeyse tüm uygulamalar aynı çözümü sunuyordu: Instagram'ı engelle, TikTok'u engelle, X'i engelle...</p>
+                        <p>İlk bakışta mantıklı görünüyordu. Ama birkaç gün sonra kendime bir soru sordum: <strong>Gerçekten Instagram bağımlısı mıydım?</strong></p>
+                        <div class="case-study-item"><h4>Problem Tanımı</h4><p>Rakiplerin çözdüğü problem benim problemim değildi. Mevcut uygulamaların neredeyse tamamı "Sosyal medyaya girişi engelle" yaklaşımını benimsiyordu.</p></div>
+                        <div class="case-study-item"><h4>Hedeflenen Çözüm</h4><p>Bu fikirden yola çıkarak Reels Block'u tasarladım. Amaç, uygulamaları tamamen engellemek değil, yalnızca bağımlılık oluşturan dikey video akışını devre dışı bırakmaktı.</p></div>
+                    `,
+                    tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
+                },
+                tytai: {
+                    title: "TYT Matematik AI Asistanı — Yapay Zekâyı Kullanmak Değil, Anlamak İstedim",
+                    badge: "Yapay Zeka / RAG",
+                    content: `
+                        <p>Yapay zekâ araçlarını uzun zamandır kullanıyordum. ChatGPT, Gemini ve benzeri modeller günlük hayatımın bir parçası olmuştu. Fakat bir noktadan sonra kendime farklı bir soru sormaya başladım: <strong>Bu sistemler nasıl çalışıyor?</strong></p>
+                        <div class="case-study-item"><h4>Neden TYT Matematik?</h4><p>Bu tamamen bilinçli bir karardı. Amacım "her şeyi bilen" değil, belirli bir konuda güvenilir cevaplar verebilen bir sistem tasarlamaktı.</p></div>
+                        <div class="case-study-item"><h4>İlk öğrendiğim şey: RAG Mimarisi</h4><p>İşte burada <strong>RAG (Retrieval-Augmented Generation)</strong> mimarisiyle tanıştım.</p></div>
+                    `,
+                    tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
+                }
             },
-            reels: {
-                title: "Reels Block — İnsanlar Sosyal Medya Bağımlısı Değil",
-                badge: "Dijital Sağlık",
-                content: `
-                    <p>Herkes aynı problemi yanlış tanımlıyordu. Bir dönem telefon kullanımımı azaltmaya çalışıyordum. Karşıma çıkan neredeyse tüm uygulamalar aynı çözümü sunuyordu: Instagram'ı engelle, TikTok'u engelle, X'i engelle...</p>
-
-                    <p>İlk bakışta mantıklı görünüyordu. Ama birkaç gün sonra kendime bir soru sordum: <strong>Gerçekten Instagram bağımlısı mıydım?</strong></p>
-
-                    <p>Sorun uygulama değildi. Düşündüğümde fark ettim ki Instagram'a sadece Reels izlemek için girmiyordum. Arkadaşlarımla mesajlaşıyordum, bildirimlerime bakıyordum, kendi içeriklerimi paylaşıyordum. Aslında bırakmak istemediğim şey Instagram değildi; bırakmak istediğim şey, beni sürekli daha fazla içerik tüketmeye iten sonsuz dikey video akışıydı.</p>
-
-                    <div class="case-study-item">
-                        <h4>Problem Tanımı</h4>
-                        <p>Rakiplerin çözdüğü problem benim problemim değildi. Mevcut uygulamaların neredeyse tamamı "Sosyal medyaya girişi engelle" yaklaşımını benimsiyordu. Fakat bu bana fazla sert bir çözüm gibi geldi. Çünkü insanlar sosyal medyayı yalnızca eğlenmek için kullanmıyor; iletişim kuruyor, işlerini yürütüyor, içerik üretiyor.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Hedeflenen Çözüm</h4>
-                        <p>Bu fikirden yola çıkarak Reels Block'u tasarladım. Amaç, uygulamaları tamamen engellemek değil, yalnızca bağımlılık oluşturan dikey video akışını devre dışı bırakmaktı. Böylece kullanıcı mesajlaşmaya ve sosyal medyanın faydalı yönlerini kullanmaya devam edebilirken, saatlerini tüketen sonsuz video akışına maruz kalmaz.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Bu projeden öğrendiklerim</h4>
-                        <p>İnsanlar çoğu zaman problemi, gördükleri yüzey üzerinden tanımlıyor. "Instagram bağımlılığı" aslında daha derindeki başka bir problemin sonucu olabilir. Birkaç kez "Neden?" diye sorduğumda asıl problemin uygulama değil, sonsuz ve ödül mekanizmasıyla çalışan dikey video akışı olduğunu fark ettim.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Gelecek Vizyonu</h4>
-                        <p>Bugün yeniden geliştirecek olsam, yalnızca engelleyen bir yapı yerine kullanıcıya analizler sunan bir sistem eklerdim. Kullanıcının hangi saatlerde Reels izlediğini ve alışkanlıklarının nasıl değiştiğini görünür kılarak, değişimi sadece durdurarak değil bilinçlendirerek sağlamayı hedeflerdim.</p>
-                    </div>
-
-                    <p>Ürün geliştirirken artık kendime şu soruyu soruyorum: <strong>Kullanıcı gerçekten bu ürüne mi bağımlı, yoksa ürünün içindeki belirli bir davranışa mı?</strong></p>
-                `,
-                tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
-            },
-            tytai: {
-                title: "TYT Matematik AI Asistanı — Yapay Zekâyı Kullanmak Değil, Anlamak İstedim",
-                badge: "Yapay Zeka / RAG",
-                content: `
-                    <p>"Bunu ben nasıl geliştirirdim?" Yapay zekâ araçlarını uzun zamandır kullanıyordum. ChatGPT, Gemini ve benzeri modeller günlük hayatımın bir parçası olmuştu. Fakat bir noktadan sonra kendime farklı bir soru sormaya başladım: <strong>Bu sistemler nasıl çalışıyor?</strong></p>
-
-                    <p>API'yi çağırıp cevap almak benim için yeterli değildi. Asıl merak ettiğim şey, bu modellerin belirli bir konuda nasıl uzmanlaştırıldığı ve kullanıcıya neden daha doğru cevaplar verebildiğiydi. Hazır cevapları kullanmak istemedim. Ben bir teknolojiyi en iyi, onu kullanırken değil; onu geliştirirken öğreniyorum.</p>
-
-                    <div class="case-study-item">
-                        <h4>Neden TYT Matematik?</h4>
-                        <p>Bu tamamen bilinçli bir karardı. Hem sınav sürecini daha önce yaşamıştım hem de doğru cevap verebilmesi için belirli bir bilgi alanına odaklanan bir sistem kurmak istiyordum. Amacım "her şeyi bilen" değil, belirli bir konuda güvenilir cevaplar verebilen bir sistem tasarlamaktı.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>İlk öğrendiğim şey: RAG Mimarisi</h4>
-                        <p>İlk başta doğrudan soru göndermenin yeterli olacağını düşündüm. Fakat modelin genel bilgisi yerine belirli kaynaklara dayanmasını istiyordum. İşte burada <strong>RAG (Retrieval-Augmented Generation)</strong> mimarisiyle tanıştım.</p>
-                        <p>Ders kitaplarını vektörleştirerek ChromaDB üzerinde sakladım. Kullanıcı soru sorduğunda sistem önce ilgili içeriği buluyor, ardından bu bağlamı Gemini'ye ileterek cevap üretiyordu. Cevabın hangi bilgiye dayanacağını kontrol edebilmek en heyecan verici kısımdı.</p>
-                    </div>
-
-                    <div class="case-study-item">
-                        <h4>Bu projeden öğrendiklerim</h4>
-                        <p>Sadece bir uygulama değil, modern yapay zekâ sistemlerinin temel yapı taşlarını deneyimledim:</p>
-                        <ul class="case-study-list" style="margin-top: 1rem;">
-                            <li>FastAPI ile Python backend geliştirdim.</li>
-                            <li>LangChain kullanarak yapay zekâ akışını yönettim.</li>
-                            <li>ChromaDB ile vektör tabanlı bilgi erişimi sağladım.</li>
-                            <li>Flutter ile mobil istemciyi geliştirerek tüm sistemi uçtan uca bağladım.</li>
-                        </ul>
-                    </div>
-
-                    <p>Bu proje bana şu düşünceyi kazandırdı: <strong>Bir teknolojiyi gerçekten öğrenmek istiyorsam, onu kullanmak yerine inşa etmeliyim.</strong> Hedefim sadece uygulama çıkarmak değil, yapay zekâ ajanlarının nasıl çalıştığını ve bir kullanıcı deneyimine nasıl dönüştürüldüğünü anlamaktı.</p>
-                `,
-                tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
+            en: {
+                odak: {
+                    title: "Odak Sınavda — Not Just a Planning App, a Trust Problem",
+                    badge: "EdTech",
+                    content: `
+                        <p>It all started with an observation. I was once a student preparing for the university exams. Many of my friends were receiving coaching. Coaches would prepare weekly schedules, and students would report how much they studied throughout the week.</p>
+                        <p>After a while, I noticed an interesting situation. Most students weren't lying because they didn't want to study, but to avoid looking bad by showing their deficiencies as better than they were. "I finished math this week," "I handled most of it," "I reviewed it." But trial exam results told a different story.</p>
+                        <p>At that moment, a question came to mind: <strong>What if the problem isn't that the student isn't studying, but that the system can't verify the learning?</strong></p>
+                        <div class="case-study-item"><h4>My initial problem definition was wrong</h4><p>Initially, like most people, I thought about developing a better planning app. But looking at the market, I saw dozens of planning apps already existed. There were calendars, to-do lists, Pomodoro timers. These weren't what was missing. The real micro-problem was a system that could understand whether the student actually learned or not.</p></div>
+                        <div class="case-study-item"><h4>Verification over trust</h4><p>This thought led me elsewhere. The coach shouldn't have to trust the student; the system should be able to verify it. Thus, the <strong>5-Star System</strong> idea was born.</p><p>When a student claimed to have completed a topic, the process didn't end there. AI would perform a brief assessment on that topic and award star points based on the student's performance.</p></div>
+                        <div class="case-study-item"><h4>Second problem: Coaches' time</h4><p>Talking to coaches, I saw another problem. Preparing weekly schedules took much more time than I thought.</p></div>
+                        <div class="case-study-item"><h4>What I learned from this project</h4><p>This project taught me something important: people often state the solution to a problem, but they don't state the actual problem.</p></div>
+                    `,
+                    tech: ["Flutter", "Riverpod", "Firebase", "Gemini API"]
+                },
+                reels: {
+                    title: "Reels Block — People Aren't Addicted to Social Media",
+                    badge: "Digital Wellbeing",
+                    content: `
+                        <p>Everyone was misdefining the same problem. I was trying to reduce my phone usage. Almost every app I encountered offered the same solution: block Instagram, block TikTok, block X...</p>
+                        <p>It seemed logical at first. But a few days later, I asked myself: <strong>Was I really addicted to Instagram?</strong></p>
+                        <div class="case-study-item"><h4>Problem Definition</h4><p>The problem competitors were solving wasn't mine. Almost all existing apps adopted the "block access to social media" approach.</p></div>
+                        <div class="case-study-item"><h4>Targeted Solution</h4><p>Based on this idea, I designed Reels Block. The goal was not to block apps entirely, but only to disable the addictive vertical video feed.</p></div>
+                    `,
+                    tech: ["Kotlin", "Android SDK", "AccessibilityService", "WindowManager"]
+                },
+                tytai: {
+                    title: "TYT Math AI Assistant — I Wanted to Understand AI, Not Just Use It",
+                    badge: "AI / RAG",
+                    content: `
+                        <p>I had been using AI tools for a long time. ChatGPT, Gemini, and similar models had become part of my daily life. but at some point, I started asking a different question: <strong>How do these systems work?</strong></p>
+                        <div class="case-study-item"><h4>Why TYT Math?</h4><p>This was a purely conscious decision. My goal was not to design a "know-it-all" system, but one that could provide reliable answers on a specific subject.</p></div>
+                        <div class="case-study-item"><h4>The first thing I learned: RAG Architecture</h4><p>This is where I was introduced to the <strong>RAG (Retrieval-Augmented Generation)</strong> architecture.</p></div>
+                    `,
+                    tech: ["Python", "FastAPI", "ChromaDB", "LangChain", "Flutter"]
+                }
             }
         };
 
-        // ── Modal Logic ──
         const modalOverlay = document.getElementById('modalOverlay');
         const modalBody = document.getElementById('modalBody');
 
         function openModal(projectId) {
-            const data = caseStudies[projectId];
+            const currentLang = localStorage.getItem('preferredLang') || 'tr';
+            const data = caseStudies[currentLang][projectId];
             if (!data) return;
-
-            let contentHtml = '';
-
-            if (data.content) {
-                // Narrative format
-                contentHtml = data.content;
-            } else if (data.cases) {
-                // Structured format
-                contentHtml = data.cases.map((c, index) => `
-                    <div class="case-study-item">
-                        <h4>Case ${index + 1}</h4>
-                        <div class="case-study-pair">
-                            <div class="problem-box">
-                                <span class="box-label">Problem</span>
-                                <p class="box-text">${c.problem}</p>
-                            </div>
-                            <div class="solution-box">
-                                <span class="box-label">Çözüm</span>
-                                <p class="box-text">${c.solution}</p>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
+            let contentHtml = data.content || '';
+            const techTitle = currentLang === 'tr' ? 'Kullanılan Teknolojiler' : 'Technologies Used';
+            const caseStudyTag = currentLang === 'tr' ? 'Case Study ve Çalışma Sürecim' : 'Case Study and Workflow';
 
             modalBody.innerHTML = `
                 <div class="case-study-header">
-                    <span class="case-study-badge">Case Study ve Çalışma Sürecim</span>
+                    <span class="case-study-badge">${caseStudyTag}</span>
                     <h2 class="case-study-title">${data.title}</h2>
                 </div>
-
                 ${contentHtml}
-
                 <div class="case-study-section" style="margin-top: 3rem;">
                     <h4 style="color: var(--primary-light); font-size: 1.1rem; margin-bottom: 1rem;">
-                        <i class="fas fa-laptop-code"></i> Kullanılan Teknolojiler
+                        <i class="fas fa-laptop-code"></i> ${techTitle}
                     </h4>
                     <div class="project-tech">
                         ${data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                     </div>
                 </div>
             `;
-
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1681,6 +1669,298 @@
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // ── Language Toggle Logic ──
+        const translations = {
+            tr: {
+                title: "Kerem Berk Yağcı | Ürün Geliştirici & Yazılım Öğrencisi",
+                mobileHome: "Ana Sayfa",
+                mobileAbout: "Hakkımda",
+                mobileSkills: "Beceriler",
+                mobileProjects: "Projeler",
+                mobileExperience: "Deneyim & Eğitim",
+                mobileContact: "İletişim",
+                navHome: "Ana Sayfa",
+                navPage: "Sayfaya Git",
+                navAbout: "Hakkımda",
+                navSkills: "Beceriler",
+                navProjects: "Projeler",
+                navExperience: "Eğitim & Deneyim",
+                navContact: "İletişim",
+                badge: "Staj & İşbirliği için Müsait",
+                heroTitle: "Merhaba, Ben ",
+                heroSubtitle: "İstanbul Üniversitesi Bilgisayar Bilimleri 3. sınıf öğrencisiyim. Flutter/Firebase tabanlı Odak Sınavda uygulamasını sıfırdan geliştirirken hem teknik mimariyi (Clean Architecture, MVVM) hem de kullanıcı problemini derinlemesine kurguladım.",
+                btnProjects: "Projelerimi Gör",
+                btnContact: "İletişime Geç",
+                sectionTagAbout: "Hakkımda",
+                sectionTitleAbout: "Kimim Ben?",
+                sectionDescAbout: "Kullanıcı ihtiyacını temel alan bir ürün geliştirici adayı.",
+                aboutTitle: "Ürün Geliştirici",
+                aboutP1: "Sınav koçluğu sürecindeki takip ve planlama verimsizliğini çözmeyi hedefleyen bir girişimde bulundum. 5 yıllık doğrudan satış ve müşteri deneyimimle SMB müşterilerine dijital büyüme danışmanlığı yürütüyorum.",
+                aboutP2: "Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen bir yaklaşımla ürün stajı arıyorum.",
+                infoUni: "Üniversite",
+                infoUniVal: "İstanbul Üniversitesi, Bilgisayar Bilimleri (2024-2028)",
+                infoHigh: "Lise",
+                infoHighVal: "Kemal Atatürk Anadolu Lisesi (2023)",
+                sectionTagSkills: "Beceriler",
+                sectionTitleSkills: "Teknik Yetkinliklerim",
+                sectionDescSkills: "Uçtan uca ürün geliştirme döngüsünün tüm aşamaları.",
+                skill1: "Programlama Dilleri",
+                skill2: "Çerçeveler & Teknolojiler",
+                skill3: "Araçlar & İşletim Sistemleri",
+                skill4: "Ürün Yetkinlikleri",
+                sectionTagProjects: "Projeler",
+                sectionTitleProjects: "Projelerim ve Çalışmalarım",
+                proj1Badge: "Kişisel Proje",
+                proj1Title: "Odak Sınavda - Öğrenci Koçluk Uygulaması",
+                proj1Desc: "Öğrenci, veli ve eğitim koçlarının yaşadığı temel problemleri analiz ederek ürün vizyonunu oluşturdum.",
+                proj2Badge: "Kendi Projem",
+                proj2Title: "Reels Block (Vertical Video Blocker)",
+                proj2Desc: "Uygulamaları tamamen engellemek yerine, sadece bağımlılık oluşturan dikey video akışlarını hedef alan bir sistem tasarladım.",
+                proj3Badge: "Kendi Projem",
+                proj3Title: "TYT Matematik Asistanı (TYT AI)",
+                proj3Desc: "Yapay zekâ ajanlarının çalışma mantığını ve uçtan uca ürün geliştirme süreçlerini deneyimlemek amacıyla kurguladım.",
+                caseStudyBtn: "Case Study'i Gör",
+                sectionTagExp: "Gelişim",
+                sectionTitleExp: "Programlar ve Eğitimler",
+                sectionTagContact: "İletişim",
+                sectionTitleContact: "Bana Ulaşın",
+                sectionDescContact: "Staj fırsatları, projeler veya işbirlikleri için iletişime geçebilirsiniz.",
+                contactTitle: "İletişime Geçelim",
+                contactDesc: "Yeni bir ürün mü geliştiriyorsunuz? Bir AI entegrasyonu mu planlıyorsunuz? Ya da sadece merhaba mı demek istiyorsunuz? En kısa sürede dönerim.",
+                contactPhone: "Telefon",
+                contactEmail: "E-posta",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "Ürün kararlarını kullanıcı ihtiyacından başlatan, teknik ve iş tarafını birlikte düşünebilen ürün geliştirici.",
+                footerCopy: "© 2026 Kerem Berk Yağcı.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "E-posta"
+            },
+            en: {
+                title: "Kerem Berk Yağcı | Product Developer & CS Student",
+                mobileHome: "Home",
+                mobileAbout: "About",
+                mobileSkills: "Skills",
+                mobileProjects: "Projects",
+                mobileExperience: "Experience & Education",
+                mobileContact: "Contact",
+                navHome: "Home",
+                navPage: "Page",
+                navAbout: "About",
+                navSkills: "Skills",
+                navProjects: "Projects",
+                navExperience: "Education & Experience",
+                navContact: "Contact",
+                badge: "Open for Internships & Collaboration",
+                heroTitle: "Hi, I'm ",
+                heroSubtitle: "I'm a 3rd-year Computer Science student at Istanbul University. While building the Flutter/Firebase-based Odak Sınavda app from scratch, I deeply architected both the technical stack (Clean Architecture, MVVM) and the user problem.",
+                btnProjects: "View My Projects",
+                btnContact: "Get in Touch",
+                sectionTagAbout: "About",
+                sectionTitleAbout: "Who Am I?",
+                sectionDescAbout: "A product developer candidate centered on user needs.",
+                aboutTitle: "Product Developer",
+                aboutP1: "I launched a venture aimed at solving tracking and planning inefficiencies in exam coaching. With 5 years of direct sales and customer experience, I provide digital growth consulting to SMB clients.",
+                aboutP2: "I'm looking for a product internship with an approach that starts product decisions from user needs and thinks through both technical and business sides together.",
+                infoUni: "University",
+                infoUniVal: "Istanbul University, Computer Science (2024-2028)",
+                infoHigh: "High School",
+                infoHighVal: "Kemal Atatürk Anatolian High School (2023)",
+                sectionTagSkills: "Skills",
+                sectionTitleSkills: "Technical Competencies",
+                sectionDescSkills: "All stages of the end-to-end product development cycle.",
+                skill1: "Programming Languages",
+                skill2: "Frameworks & Technologies",
+                skill3: "Tools & Operating Systems",
+                skill4: "Product Competencies",
+                sectionTagProjects: "Projects",
+                sectionTitleProjects: "My Projects & Work",
+                proj1Badge: "Personal Project",
+                proj1Title: "Odak Sınavda - Student Coaching App",
+                proj1Desc: "I analyzed the core problems faced by students, parents, and coaches to build the product vision.",
+                proj2Badge: "My Own Project",
+                proj2Title: "Reels Block (Vertical Video Blocker)",
+                proj2Desc: "Instead of blocking apps entirely, I designed a system that targets only addictive vertical video feeds.",
+                proj3Badge: "My Own Project",
+                proj3Title: "TYT Math Assistant (TYT AI)",
+                proj3Desc: "I built this to experience how AI agents work and the end-to-end product development process.",
+                caseStudyBtn: "View Case Study",
+                sectionTagExp: "Development",
+                sectionTitleExp: "Programs & Education",
+                sectionTagContact: "Contact",
+                sectionTitleContact: "Get in Touch",
+                sectionDescContact: "Feel free to reach out for internship opportunities, projects, or collaborations.",
+                contactTitle: "Let's Connect",
+                contactDesc: "Building a new product? Planning an AI integration? Or just want to say hello? I'll get back to you as soon as possible.",
+                contactPhone: "Phone",
+                contactEmail: "Email",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "A product developer who starts product decisions from user needs and thinks through both technical and business sides together.",
+                footerCopy: "© 2026 Kerem Berk Yağcı.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "Email"
+            }
+        };
+
+        function applyLang(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.documentElement.lang = lang;
+            document.title = t.title;
+
+            // Mobile menu
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            const mobileTexts = [t.mobileHome, t.mobileAbout, t.mobileSkills, t.mobileProjects, t.mobileExperience, t.mobileContact];
+            mobileLinks.forEach((link, i) => { if (mobileTexts[i]) link.textContent = mobileTexts[i]; });
+
+            // Nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const navTexts = [t.navHome, t.navPage, t.navAbout, t.navSkills, t.navProjects, t.navExperience, t.navContact];
+            navLinks.forEach((link, i) => { if (navTexts[i]) link.textContent = navTexts[i]; });
+
+            // Hero
+            const badge = document.querySelector('.hero-badge');
+            if (badge) { const badgeText = badge.childNodes[2]; if (badgeText) badgeText.textContent = ' ' + t.badge; }
+            const heroH1 = document.querySelector('.hero h1');
+            if (heroH1) heroH1.innerHTML = t.heroTitle + '<span class="gradient-text">Kerem Berk Yağcı</span>';
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+            const heroBtns = document.querySelectorAll('.hero-buttons .btn');
+            if (heroBtns.length >= 2) {
+                const btn1 = heroBtns[0].querySelector('i');
+                if (btn1) heroBtns[0].innerHTML = btn1.outerHTML + ' ' + t.btnProjects;
+                const btn2 = heroBtns[1].querySelector('i');
+                if (btn2) heroBtns[1].innerHTML = btn2.outerHTML + ' ' + t.btnContact;
+            }
+
+            // Section headers
+            const sectionTags = document.querySelectorAll('.section-tag');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const sectionDescs = document.querySelectorAll('.section-desc');
+            if (sectionTags.length >= 4) {
+                sectionTags[0].textContent = t.sectionTagAbout;
+                sectionTags[1].textContent = t.sectionTagSkills;
+                sectionTags[2].textContent = t.sectionTagProjects;
+                sectionTags[3].textContent = t.sectionTagExp;
+                sectionTags[4].textContent = t.sectionTagContact;
+            }
+            if (sectionTitles.length >= 5) {
+                sectionTitles[0].textContent = t.sectionTitleAbout;
+                sectionTitles[1].textContent = t.sectionTitleSkills;
+                sectionTitles[2].textContent = t.sectionTitleProjects;
+                sectionTitles[3].textContent = t.sectionTitleExp;
+                sectionTitles[4].textContent = t.sectionTitleContact;
+            }
+            if (sectionDescs.length >= 5) {
+                sectionDescs[0].textContent = t.sectionDescAbout;
+                sectionDescs[1].textContent = t.sectionDescSkills;
+                sectionDescs[2].textContent = t.sectionDescProjects;
+                sectionDescs[3].textContent = t.sectionDescExp;
+                sectionDescs[4].textContent = t.sectionDescContact;
+            }
+
+            // About
+            const aboutTitles = document.querySelectorAll('.about-content h3');
+            if (aboutTitles.length >= 1) aboutTitles[0].textContent = t.aboutTitle;
+            const aboutParagraphs = document.querySelectorAll('.about-content > p');
+            if (aboutParagraphs.length >= 2) {
+                aboutParagraphs[0].textContent = t.aboutP1;
+                aboutParagraphs[1].textContent = t.aboutP2;
+            }
+            const infoItems = document.querySelectorAll('.info-item');
+            if (infoItems.length >= 2) {
+                const uniStrong = infoItems[0].querySelector('strong');
+                const uniSpan = infoItems[0].querySelector('span');
+                if (uniStrong) uniStrong.textContent = t.infoUni;
+                if (uniSpan) uniSpan.textContent = t.infoUniVal;
+                const highStrong = infoItems[1].querySelector('strong');
+                const highSpan = infoItems[1].querySelector('span');
+                if (highStrong) highStrong.textContent = t.infoHigh;
+                if (highSpan) highSpan.textContent = t.infoHighVal;
+            }
+
+            // Skills
+            const skillTitles = document.querySelectorAll('.skill-card h3');
+            if (skillTitles.length >= 4) {
+                skillTitles[0].textContent = t.skill1;
+                skillTitles[1].textContent = t.skill2;
+                skillTitles[2].textContent = t.skill3;
+                skillTitles[3].textContent = t.skill4;
+            }
+
+            // Projects
+            const projectBadges = document.querySelectorAll('.project-badge');
+            const projectTitles = document.querySelectorAll('.project-header > h3');
+            const projectDescs = document.querySelectorAll('.project-body > p');
+            if (projectBadges.length >= 3) {
+                projectBadges[0].innerHTML = '<i class="fas fa-star"></i> ' + t.proj1Badge;
+                projectBadges[1].innerHTML = '<i class="fas fa-mobile-alt"></i> ' + t.proj2Badge;
+                projectBadges[2].innerHTML = '<i class="fas fa-robot"></i> ' + t.proj3Badge;
+            }
+            if (projectTitles.length >= 3) {
+                projectTitles[0].textContent = t.proj1Title;
+                projectTitles[1].textContent = t.proj2Title;
+                projectTitles[2].textContent = t.proj3Title;
+            }
+            if (projectDescs.length >= 3) {
+                projectDescs[0].textContent = t.proj1Desc;
+                projectDescs[1].textContent = t.proj2Desc;
+                projectDescs[2].textContent = t.proj3Desc;
+            }
+
+            // Case study buttons
+            const caseStudyBtns = document.querySelectorAll('.btn-expand');
+            caseStudyBtns.forEach(btn => {
+                const icon = btn.querySelector('i');
+                if (icon) btn.innerHTML = icon.outerHTML + ' ' + t.caseStudyBtn;
+            });
+
+            // Contact
+            const contactTitles = document.querySelectorAll('.contact-info h3');
+            if (contactTitles.length >= 1) contactTitles[0].textContent = t.contactTitle;
+            const contactDesc = document.querySelector('.contact-info > p');
+            if (contactDesc) contactDesc.textContent = t.contactDesc;
+            const contactLinkLabels = document.querySelectorAll('.contact-link strong');
+            if (contactLinkLabels.length >= 4) {
+                contactLinkLabels[0].textContent = t.contactPhone;
+                contactLinkLabels[1].textContent = t.contactEmail;
+                contactLinkLabels[2].textContent = t.contactLinkedin;
+                contactLinkLabels[3].textContent = t.contactGithub;
+            }
+
+            // Footer
+            const footerDesc = document.querySelector('.footer-desc');
+            if (footerDesc) footerDesc.textContent = t.footerDesc;
+            const footerCopy = document.querySelector('.footer-copy');
+            if (footerCopy) footerCopy.textContent = t.footerCopy;
+            const footerTitles = document.querySelectorAll('.footer-social a');
+            if (footerTitles.length >= 3) {
+                footerTitles[0].title = t.footerTitleGithub;
+                footerTitles[1].title = t.footerTitleLinkedin;
+                footerTitles[2].title = t.footerTitleEmail;
+            }
+
+            // Toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        const savedLang = localStorage.getItem('preferredLang') || 'tr';
+        applyLang(savedLang);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyLang(btn.dataset.lang);
+            });
+        });
     </script>
 </body>
 </html>

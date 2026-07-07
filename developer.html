@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7DRV8KGKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q7DRV8KGKK');
+    </script>
     <style>
         :root {
             --primary: #6366f1;
@@ -149,6 +158,37 @@
             border: none;
             color: var(--text-primary);
             font-size: 1.8rem;
+        }
+
+        /* ── Language Toggle ── */
+        .lang-toggle {
+            display: flex;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 3px;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+        .lang-btn {
+            padding: 4px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
         }
 
         /* ── Hero ── */
@@ -994,7 +1034,7 @@
     </div>
 
     <nav id="navbar">
-        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY.</div>
+        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">KBY</div>
         <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="#home">Sayfaya Git</a></li>
@@ -1004,6 +1044,10 @@
             <li><a href="#experience">Deneyim</a></li>
             <li><a href="#contact">İletişim</a></li>
         </ul>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="tr">TR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
         <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     </nav>
 
@@ -1441,7 +1485,7 @@
     </section>
 
     <footer>
-        <div class="footer-brand">KBY.</div>
+        <div class="footer-brand">KBY</div>
         <p class="footer-desc">
             Flutter, AI ve mobil ürün geliştirme alanlarında tutkulu bir yazılım geliştirici.
             Temiz kod ve kullanıcı deneyimini ön planda tutarak gerçek çözümler üretiyorum.
@@ -1533,6 +1577,470 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            });
+        });
+
+        // ── Language Toggle Logic ──
+        const translations = {
+            tr: {
+                title: "Kerem Berk Yağcı | Yazılım Geliştirici Öğrenci",
+                mobileHome: "Ana Sayfa",
+                mobileAbout: "Hakkımda",
+                mobileSkills: "Beceriler",
+                mobileProjects: "Projeler",
+                mobileExperience: "Deneyim",
+                mobileContact: "İletişim",
+                navHome: "Ana Sayfa",
+                navPage: "Sayfaya Git",
+                navAbout: "Hakkımda",
+                navSkills: "Beceriler",
+                navProjects: "Projeler",
+                navExperience: "Deneyim",
+                navContact: "İletişim",
+                badge: "Staj & İşbirliği için Müsait",
+                heroTitle: "Merhaba, Ben ",
+                heroSubtitle: "İstanbul Üniversitesi Bilgisayar Bilimleri öğrencisi — Flutter ile gerçek ürünler geliştiren, AI entegrasyonlarını sıfırdan kuran ve kullanıcı deneyimini her şeyin önünde tutan bir yazılım geliştirici.",
+                btnProjects: "Projelerimi Gör",
+                btnContact: "İletişime Geç",
+                stat1: "Yıl Yazılım Geliştirme",
+                stat2: "Yıl Satış & Müşteri Deneyimi",
+                stat3: "Aktif Proje",
+                sectionTagAbout: "Hakkımda",
+                sectionTitleAbout: "Kimim Ben?",
+                sectionDescAbout: "Teknik derinliği iş zekasıyla birleştiren bir ürün geliştirici.",
+                aboutTitle: "Product Engineer adayı & Flutter Geliştirici",
+                aboutP1: "İstanbul Üniversitesi Bilgisayar Bilimleri bölümünde 3. sınıf öğrencisiyim. Üniversite eğitiminin yanında, gerçek kullanıcılara yönelik ürünler geliştiriyor; mobil uygulama, AI entegrasyonu ve e-ticaret altyapısı alanlarında aktif olarak çalışıyorum.",
+                aboutP2: "Yazılıma geçmeden önce 5+ yıl sahada çalıştım — müşteri yönetimi, satış ve marka operasyonları. Teknoloji sektöründe değil; ama bu deneyim bana kod yazmaktan önce \"bu kullanıcı ne istiyor?\" diye sormayı öğretti. Şimdi geliştirici olarak en büyük avantajım bu: ürünü kullananın gözünden düşünebilmek.",
+                infoEdu: "Eğitim",
+                infoEduVal: "İstanbul Üniversitesi — Bilgisayar Bilimleri",
+                infoLoc: "Konum",
+                infoLocVal: "İstanbul, Türkiye",
+                infoRole: "Hedef Rol",
+                infoRoleVal: "Product Engineer / Mobile Developer",
+                infoGrad: "Mezuniyet",
+                infoGradVal: "Haziran 2028",
+                sectionTagSkills: "Beceriler",
+                sectionTitleSkills: "Teknik Yetkinliklerim",
+                sectionDescSkills: "Ürün geliştirme döngüsünün tamamında aktif rol alıyorum.",
+                skill1: "Mobil Geliştirme",
+                skill2: "Backend & Altyapı",
+                skill3: "AI & LLM Entegrasyonu",
+                skill4: "Diller & Araçlar",
+                sectionTagProjects: "Projeler",
+                sectionTitleProjects: "Öne Çıkan Çalışmalarım",
+                sectionDescProjects: "Gerçek kullanıcı problemlerini çözen, production'a yakın projeler.",
+                proj1Badge: "Ana Proje",
+                proj1Title: "Focus — YKS/AYT Öğrenci Koçluk Uygulaması",
+                proj1Desc: "Türkiye'deki üniversite sınavına hazırlanan öğrenciler ve koçları için geliştirdiğim, veri odaklı bir eğitim takip platformu. Koç ile öğrenci arasındaki tüm etkileşimi dijitalleştiriyor ve AI ile kişiselleştirilmiş stratejiler sunuyor.",
+                proj2Badge: "Kişisel Proje",
+                proj2Title: "ReelsBlock — Instagram Reels Engelleyici",
+                proj2Desc: "Android'de Instagram Reels bölümüne girince otomatik olarak devreye giren ve ekranı kapatan bir arka plan uygulaması. Dijital bağımlılığı azaltmak için geliştirildi; hiçbir ekstra aksiyon gerekmez.",
+                proj3Badge: "AI Projesi",
+                proj3Title: "Türkçe RAG Pipeline",
+                proj3Desc: "Türkçe belgeler üzerinde soru-cevap yapabilen, yerli dil modeli destekli bir Retrieval-Augmented Generation sistemi. PDF belgelerini işleyerek semantik arama ve bağlamsal yanıt üretimi yapıyor.",
+                proj4Badge: "Kişisel Proje",
+                proj4Title: "TYT Matematik Çalışma Ajanı",
+                proj4Desc: "TYT Matematik hazırlık sürecindeki öğrencilerin eksik konularını analiz ederek anlık rehberlik ve kişiselleştirilmiş çözüm stratejileri sunan akıllı bir eğitim asistanı.",
+                proj5Badge: "Üniversite Projesi",
+                proj5Title: "Araç Kiralama Sistemi",
+                proj5Desc: "C++ ile geliştirilen konsol tabanlı araç kiralama uygulaması. Nesne yönelimli programlamanın temel prensipleri eksiksiz uygulandı; gerçekçi bir senaryo üzerinden tasarlandı.",
+                proj1h1: "Konu bazlı öğrenci ilerleme takibi ve zayıf alan analizi",
+                proj1h2: "Gemini API ile öğrenci profiline özel çalışma planı üretimi",
+                proj1h3: "Koç Paneli: tüm öğrencilerin topic-level performansını tek ekranda görme",
+                proj1h4: "Firebase Firestore ile gerçek zamanlı senkronizasyon",
+                proj1h5: "Riverpod ile state management, Clean Architecture prensiplerine uygun katmanlı yapı",
+                proj2h1: "AccessibilityService ile Instagram ekran içeriğini gerçek zamanlı izleme",
+                proj2h2: "WindowManager overlay ile Reels sayfası açıldığında anında müdahale",
+                proj2h3: "Kullanıcı izni tabanlı arka plan çalışma — pil optimizasyonu yapıldı",
+                proj2h4: "Sıfır UI karmaşıklığı: kur, unut, çalışsın",
+                proj3h1: "Docling ile PDF ayrıştırma ve bölümleme",
+                proj3h2: "Turkish BERT embeddings ile Türkçe semantik anlama",
+                proj3h3: "ChromaDB vektör veritabanında belge indeksleme",
+                proj3h4: "CUDA (RTX 4050) üzerinde GPU destekli embedding hesaplama",
+                proj4h1: "Öğrenci hata paterni analizi ile zayıf konu tespiti",
+                proj4h2: "Prompt engineering ile sınav odaklı açıklama formatı",
+                proj4h3: "Focus app'e entegre çalışacak şekilde tasarlandı",
+                proj5h1: "Soyut sınıf ve kalıtım ile araç hiyerarşisi modellendi",
+                proj5h2: "Polimorfizm ile kiralama ve fiyatlandırma mantığı genişletilebilir yapıda",
+                proj5h3: "File I/O ile müşteri ve rezervasyon kayıtları kalıcı depolama",
+                proj5h4: "Exception handling ile hatalı giriş senaryoları yönetildi",
+                exp1Desc: "Otomotiv sektörünün dijital dönüşümü, akıllı mobilite (smart mobility) ve yazılım tanımlı araçlar (software-defined vehicles) üzerine yoğunlaştığım sektörel kamp programı. Teknolojinin otomotiv ürün geliştirme süreçlerine entegrasyonu hakkında kapsamlı bir vizyon edindim.",
+                exp1h1: "Otomotiv ekosisteminde yapay zeka ve yazılım tabanlı inovasyonların incelenmesi",
+                exp1h2: "Sektör profesyonelleriyle ürün mühendisliği ve geleceğin mobilite çözümleri üzerine mentörlük seansları",
+                exp1h3: "Farklı disiplinlerden gelen ekiplerle sektörel vaka analizleri ve yenilikçi süreç kurguları",
+                exp2Desc: "Sadece teknik becerilerin değil, geleceğin dünyasında fark yaratacak sosyal yetkinliklerin de önemine inanıyorum. Bilim Virüsü tarafından düzenlenen 'Geleceği Yeniliyoruz' programı kapsamında; liderlik, kriz anlarında duygusal dayanıklılık, etkili zaman yönetimi ve eleştirel düşünme gibi dinamik 21. yüzyıl becerileri üzerine interaktif atölyelere katıldım ve başarıyla tamamladım.",
+                exp3Desc: "Lisans eğitimimi sürdürürken ders dışında gerçek ürünler geliştiriyorum. Akademik çalışmalarımı sektöre yönelik projelerle paralel yürütüyorum.",
+                exp3h1: "Algoritma, veri yapıları, OOP, ağ programlama dersleri",
+                exp3h2: "Cisco Packet Tracer ile IPv4/IPv6 ağ yapılandırması projesi",
+                exp3h3: "Simplex method (Big-M) ve CPM/kritik yol analizi uygulaması",
+                exp4Desc: "Lise eğitimimi tamamladım. Yazılıma olan ilgim bu dönemde şekillendi; temel eğitimler aldım ve merakım oluştu. Kendi projelerimi geliştirmeye üniversitede başladım.",
+                sectionTagExp: "Deneyim",
+                sectionTitleExp: "Kariyer Yolculuğum",
+                sectionDescExp: "Teknik gelişimle iş deneyimini paralel yürüten bir süreç.",
+                sectionTagContact: "İletişim",
+                sectionTitleContact: "Bana Ulaşın",
+                sectionDescContact: "Staj fırsatları, projeler veya işbirlikleri için iletişime geçebilirsiniz.",
+                contactTitle: "İletişime Geçelim",
+                contactDesc: "Yeni bir ürün mü geliştiriyorsunuz? Bir AI entegrasyonu mu planlıyorsunuz? Ya da sadece merhaba mı demek istiyorsunuz? En kısa sürede dönerim.",
+                contactPhone: "Telefon",
+                contactEmail: "E-posta",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "Flutter, AI ve mobil ürün geliştirme alanlarında tutkulu bir yazılım geliştirici. Temiz kod ve kullanıcı deneyimini ön planda tutarak gerçek çözümler üretiyorum.",
+                footerCopy: "© 2026 Kerem Berk Yağcı. ❤ ile yapıldı.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "E-posta",
+                demoRequest: "Demo İste",
+                projGithub: "GitHub"
+            },
+            en: {
+                title: "Kerem Berk Yağcı | Software Developer Student",
+                mobileHome: "Home",
+                mobileAbout: "About",
+                mobileSkills: "Skills",
+                mobileProjects: "Projects",
+                mobileExperience: "Experience",
+                mobileContact: "Contact",
+                navHome: "Home",
+                navPage: "Page",
+                navAbout: "About",
+                navSkills: "Skills",
+                navProjects: "Projects",
+                navExperience: "Experience",
+                navContact: "Contact",
+                badge: "Open for Internships & Collaboration",
+                heroTitle: "Hi, I'm ",
+                heroSubtitle: "Istanbul University Computer Science student — a software developer who builds real products with Flutter, builds AI integrations from scratch, and puts user experience above everything.",
+                btnProjects: "View My Projects",
+                btnContact: "Get in Touch",
+                stat1: "Years Software Development",
+                stat2: "Years Sales & Customer Experience",
+                stat3: "Active Projects",
+                sectionTagAbout: "About",
+                sectionTitleAbout: "Who Am I?",
+                sectionDescAbout: "A product developer combining technical depth with business intelligence.",
+                aboutTitle: "Product Engineer Candidate & Flutter Developer",
+                aboutP1: "I'm a 3rd-year Computer Science student at Istanbul University. Alongside my university education, I develop real products for real users, actively working in mobile development, AI integration, and e-commerce infrastructure.",
+                aboutP2: "Before transitioning to software, I worked 5+ years on the field — customer management, sales, and brand operations. Not in tech — but this experience taught me to ask \"what does this user want?\" before writing code. Now, as a developer, my greatest advantage is this: being able to think from the user's perspective.",
+                infoEdu: "Education",
+                infoEduVal: "Istanbul University — Computer Science",
+                infoLoc: "Location",
+                infoLocVal: "Istanbul, Turkey",
+                infoRole: "Target Role",
+                infoRoleVal: "Product Engineer / Mobile Developer",
+                infoGrad: "Graduation",
+                infoGradVal: "June 2028",
+                sectionTagSkills: "Skills",
+                sectionTitleSkills: "Technical Competencies",
+                sectionDescSkills: "I take an active role throughout the entire product development cycle.",
+                skill1: "Mobile Development",
+                skill2: "Backend & Infrastructure",
+                skill3: "AI & LLM Integration",
+                skill4: "Languages & Tools",
+                sectionTagProjects: "Projects",
+                sectionTitleProjects: "Featured Work",
+                sectionDescProjects: "Production-ready projects that solve real user problems.",
+                proj1Badge: "Main Project",
+                proj1Title: "Focus — YKS/AYT Student Coaching App",
+                proj1Desc: "A data-driven educational tracking platform I developed for students preparing for university entrance exams and their coaches. It digitizes all interaction between coach and student while offering AI-personalized strategies.",
+                proj2Badge: "Personal Project",
+                proj2Title: "ReelsBlock — Instagram Reels Blocker",
+                proj2Desc: "A background app that automatically activates when entering Instagram Reels on Android and closes the screen. Built to reduce digital addiction; no extra action needed.",
+                proj3Badge: "AI Project",
+                proj3Title: "Turkish RAG Pipeline",
+                proj3Desc: "A Retrieval-Augmented Generation system with native language model support that can answer questions on Turkish documents. Processes PDFs for semantic search and contextual response generation.",
+                proj4Badge: "Personal Project",
+                proj4Title: "TYT Math Study Agent",
+                proj4Desc: "An intelligent educational assistant that analyzes students' weak topics during TYT Math preparation and provides instant guidance with personalized solution strategies.",
+                proj5Badge: "University Project",
+                proj5Title: "Car Rental System",
+                proj5Desc: "A console-based car rental application developed in C++. Core principles of object-oriented programming are fully implemented, designed around a realistic scenario.",
+                sectionTagExp: "Experience",
+                sectionTitleExp: "My Career Journey",
+                sectionDescExp: "A process running technical growth in parallel with work experience.",
+                sectionTagContact: "Contact",
+                sectionTitleContact: "Get in Touch",
+                sectionDescContact: "Feel free to reach out for internship opportunities, projects, or collaborations.",
+                contactTitle: "Let's Connect",
+                contactDesc: "Building a new product? Planning an AI integration? Or just want to say hello? I'll get back to you as soon as possible.",
+                contactPhone: "Phone",
+                contactEmail: "Email",
+                contactLinkedin: "LinkedIn",
+                contactGithub: "GitHub",
+                footerDesc: "A passionate software developer in Flutter, AI, and mobile product development. I create real solutions with clean code and user experience at the forefront.",
+                footerCopy: "© 2026 Kerem Berk Yağcı. Made with ❤.",
+                footerTitleGithub: "GitHub",
+                footerTitleLinkedin: "LinkedIn",
+                footerTitleEmail: "Email",
+                demoRequest: "Request Demo",
+                proj1h1: "Topic-based student progress tracking and weak area analysis",
+                proj1h2: "AI-powered personalized study plans generated via Gemini API based on student profile",
+                proj1h3: "Coach Dashboard: real-time topic-level performance monitoring for all students on a single screen",
+                proj1h4: "Seamless real-time synchronization using Firebase Firestore",
+                proj1h5: "Modular state management with Riverpod, following Clean Architecture principles",
+                proj2h1: "Real-time Instagram screen monitoring via AccessibilityService",
+                proj2h2: "Instant blocking of Reels pages using WindowManager overlay",
+                proj2h3: "Battery-optimized background operation with user-permission-based access",
+                proj2h4: "Clean and distraction-free: set it up once and it works in the background",
+                proj3h1: "Advanced PDF parsing and chunking with Docling",
+                proj3h2: "Turkish semantic understanding using Turkish BERT embeddings",
+                proj3h3: "Efficient document indexing and retrieval via ChromaDB vector database",
+                proj3h4: "GPU-accelerated embedding computation on CUDA (RTX 4050)",
+                proj4h1: "Weak topic detection through student error pattern analysis",
+                proj4h2: "Exam-oriented explanations using optimized prompt engineering",
+                proj4h3: "Designed for seamless integration with the Focus app ecosystem",
+                proj5h1: "Vehicle hierarchy modeled with abstract classes and inheritance",
+                proj5h2: "Extensible rental and pricing logic leveraging polymorphism",
+                proj5h3: "Persistent storage for customer and reservation data using File I/O",
+                proj5h4: "Robust error handling for invalid input scenarios",
+                exp1Desc: "An industry-focused program concentrating on the digital transformation of the automotive sector, smart mobility, and software-defined vehicles (SDV). Gained deep insights into integrating software engineering with automotive product development.",
+                exp1h1: "Analyzed AI and software-based innovations within the automotive ecosystem",
+                exp1h2: "Mentorship sessions with industry leads from Mercedes-Benz and Renault on future mobility",
+                exp1h3: "Collaborated on industry case studies and innovative process designs with multidisciplinary teams",
+                exp2Desc: "Focused on developing 21st-century soft skills essential for the future of work. Participated in intensive workshops on leadership, emotional resilience, effective time management, and critical thinking organized by Bilim Virüsü.",
+                exp3Desc: "Pursuing an undergraduate degree while building real-world products. Balancing academic rigor with industry-focused projects and practical application.",
+                exp3h1: "Core courses in algorithms, data structures, OOP, and networking",
+                exp3h2: "IPv4/IPv6 network configuration project implemented via Cisco Packet Tracer",
+                exp3h3: "Mathematical optimization using Simplex method (Big-M) and CPM/critical path analysis",
+                exp4Desc: "Graduated from high school. This period marked the beginning of my journey into software development, driven by curiosity and a commitment to self-taught foundations.",
+                projGithub: "GitHub"
+            }
+        };
+
+        function applyLang(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.documentElement.lang = lang;
+            document.title = t.title;
+
+            // Mobile menu
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            const mobileTexts = [t.mobileHome, t.mobileAbout, t.mobileSkills, t.mobileProjects, t.mobileExperience, t.mobileContact];
+            mobileLinks.forEach((link, i) => {
+                if (mobileTexts[i]) link.textContent = mobileTexts[i];
+            });
+
+            // Nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const navTexts = [t.navHome, t.navPage, t.navAbout, t.navSkills, t.navProjects, t.navExperience, t.navContact];
+            navLinks.forEach((link, i) => {
+                if (navTexts[i]) link.textContent = navTexts[i];
+            });
+
+            // Hero
+            const badge = document.querySelector('.hero-badge');
+            if (badge) {
+                const badgeText = badge.childNodes[2];
+                if (badgeText) badgeText.textContent = ' ' + t.badge;
+            }
+            const heroH1 = document.querySelector('.hero h1');
+            if (heroH1) {
+                heroH1.innerHTML = t.heroTitle + '<span class="gradient-text">Kerem Berk Yağcı</span>';
+            }
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+
+            const heroBtns = document.querySelectorAll('.hero-buttons .btn');
+            if (heroBtns.length >= 2) {
+                const btn1 = heroBtns[0].querySelector('i');
+                if (btn1) heroBtns[0].innerHTML = btn1.outerHTML + ' ' + t.btnProjects;
+                const btn2 = heroBtns[1].querySelector('i');
+                if (btn2) heroBtns[1].innerHTML = btn2.outerHTML + ' ' + t.btnContact;
+            }
+
+            // Stats
+            const statLabels = document.querySelectorAll('.stat-label');
+            if (statLabels.length >= 3) {
+                statLabels[0].textContent = t.stat1;
+                statLabels[1].textContent = t.stat2;
+                statLabels[2].textContent = t.stat3;
+            }
+
+            // About section
+            const sectionTags = document.querySelectorAll('.section-tag');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const sectionDescs = document.querySelectorAll('.section-desc');
+            if (sectionTags.length >= 5) {
+                sectionTags[0].textContent = t.sectionTagAbout;
+                sectionTags[1].textContent = t.sectionTagSkills;
+                sectionTags[2].textContent = t.sectionTagProjects;
+                sectionTags[3].textContent = t.sectionTagExp;
+                sectionTags[4].textContent = t.sectionTagContact;
+            }
+            if (sectionTitles.length >= 5) {
+                sectionTitles[0].textContent = t.sectionTitleAbout;
+                sectionTitles[1].textContent = t.sectionTitleSkills;
+                sectionTitles[2].textContent = t.sectionTitleProjects;
+                sectionTitles[3].textContent = t.sectionTitleExp;
+                sectionTitles[4].textContent = t.sectionTitleContact;
+            }
+            if (sectionDescs.length >= 5) {
+                sectionDescs[0].textContent = t.sectionDescAbout;
+                sectionDescs[1].textContent = t.sectionDescSkills;
+                sectionDescs[2].textContent = t.sectionDescProjects;
+                sectionDescs[3].textContent = t.sectionDescExp;
+                sectionDescs[4].textContent = t.sectionDescContact;
+            }
+
+            // About content
+            const aboutTitles = document.querySelectorAll('.about-content h3');
+            if (aboutTitles.length >= 1) aboutTitles[0].textContent = t.aboutTitle;
+            const aboutParagraphs = document.querySelectorAll('.about-content > p');
+            if (aboutParagraphs.length >= 2) {
+                aboutParagraphs[0].textContent = t.aboutP1;
+                aboutParagraphs[1].textContent = t.aboutP2;
+            }
+
+            const infoItems = document.querySelectorAll('.info-item');
+            if (infoItems.length >= 4) {
+                const eduStrong = infoItems[0].querySelector('strong');
+                const eduSpan = infoItems[0].querySelector('span');
+                if (eduStrong) eduStrong.textContent = t.infoEdu;
+                if (eduSpan) eduSpan.textContent = t.infoEduVal;
+
+                const locStrong = infoItems[1].querySelector('strong');
+                const locSpan = infoItems[1].querySelector('span');
+                if (locStrong) locStrong.textContent = t.infoLoc;
+                if (locSpan) locSpan.textContent = t.infoLocVal;
+
+                const roleStrong = infoItems[2].querySelector('strong');
+                const roleSpan = infoItems[2].querySelector('span');
+                if (roleStrong) roleStrong.textContent = t.infoRole;
+                if (roleSpan) roleSpan.textContent = t.infoRoleVal;
+
+                const gradStrong = infoItems[3].querySelector('strong');
+                const gradSpan = infoItems[3].querySelector('span');
+                if (gradStrong) gradStrong.textContent = t.infoGrad;
+                if (gradSpan) gradSpan.textContent = t.infoGradVal;
+            }
+
+            // Skills
+            const skillTitles = document.querySelectorAll('.skill-card h3');
+            if (skillTitles.length >= 4) {
+                skillTitles[0].textContent = t.skill1;
+                skillTitles[1].textContent = t.skill2;
+                skillTitles[2].textContent = t.skill3;
+                skillTitles[3].textContent = t.skill4;
+            }
+
+            // Projects
+            const projectBadges = document.querySelectorAll('.project-badge');
+            const projectTitles = document.querySelectorAll('.project-header > h3');
+            const projectDescs = document.querySelectorAll('.project-body > p');
+            if (projectBadges.length >= 5) {
+                projectBadges[0].innerHTML = '<i class="fas fa-star"></i> ' + t.proj1Badge;
+                projectBadges[1].innerHTML = '<i class="fas fa-user"></i> ' + t.proj2Badge;
+                projectBadges[2].innerHTML = '<i class="fas fa-robot"></i> ' + t.proj3Badge;
+                projectBadges[3].innerHTML = '<i class="fas fa-user"></i> ' + t.proj4Badge;
+                projectBadges[4].innerHTML = '<i class="fas fa-university"></i> ' + t.proj5Badge;
+            }
+            if (projectTitles.length >= 5) {
+                projectTitles[0].textContent = t.proj1Title;
+                projectTitles[1].textContent = t.proj2Title;
+                projectTitles[2].textContent = t.proj3Title;
+                projectTitles[3].textContent = t.proj4Title;
+                projectTitles[4].textContent = t.proj5Title;
+            }
+            if (projectDescs.length >= 5) {
+                projectDescs[0].textContent = t.proj1Desc;
+                projectDescs[1].textContent = t.proj2Desc;
+                projectDescs[2].textContent = t.proj3Desc;
+                projectDescs[3].textContent = t.proj4Desc;
+                projectDescs[4].textContent = t.proj5Desc;
+            }
+
+            // Project highlights
+            const allHighlights = document.querySelectorAll('.project-highlights');
+            if (allHighlights.length >= 5) {
+                const h1 = allHighlights[0].querySelectorAll('li');
+                if (h1.length >= 5) { h1[0].textContent = t.proj1h1; h1[1].textContent = t.proj1h2; h1[2].textContent = t.proj1h3; h1[3].textContent = t.proj1h4; h1[4].textContent = t.proj1h5; }
+                const h2 = allHighlights[1].querySelectorAll('li');
+                if (h2.length >= 4) { h2[0].textContent = t.proj2h1; h2[1].textContent = t.proj2h2; h2[2].textContent = t.proj2h3; h2[3].textContent = t.proj2h4; }
+                const h3 = allHighlights[2].querySelectorAll('li');
+                if (h3.length >= 4) { h3[0].textContent = t.proj3h1; h3[1].textContent = t.proj3h2; h3[2].textContent = t.proj3h3; h3[3].textContent = t.proj3h4; }
+                const h4 = allHighlights[3].querySelectorAll('li');
+                if (h4.length >= 3) { h4[0].textContent = t.proj4h1; h4[1].textContent = t.proj4h2; h4[2].textContent = t.proj4h3; }
+                const h5 = allHighlights[4].querySelectorAll('li');
+                if (h5.length >= 4) { h5[0].textContent = t.proj5h1; h5[1].textContent = t.proj5h2; h5[2].textContent = t.proj5h3; h5[3].textContent = t.proj5h4; }
+            }
+
+            // Timeline descriptions
+            const timelinePs = document.querySelectorAll('.timeline-content > p');
+            if (timelinePs.length >= 4) {
+                timelinePs[0].textContent = t.exp1Desc;
+                timelinePs[1].textContent = t.exp2Desc;
+                timelinePs[2].textContent = t.exp3Desc;
+                timelinePs[3].textContent = t.exp4Desc;
+            }
+
+            // Timeline highlights
+            const timelineHighlights = document.querySelectorAll('.experience-timeline .timeline-highlights');
+            if (timelineHighlights.length >= 2) {
+                const th1 = timelineHighlights[0].querySelectorAll('li');
+                if (th1.length >= 3) { th1[0].textContent = t.exp1h1; th1[1].textContent = t.exp1h2; th1[2].textContent = t.exp1h3; }
+                const th3 = timelineHighlights[1].querySelectorAll('li');
+                if (th3.length >= 3) { th3[0].textContent = t.exp3h1; th3[1].textContent = t.exp3h2; th3[2].textContent = t.exp3h3; }
+            }
+
+            // Project footers - demo request links
+            const projectFooters = document.querySelectorAll('.project-footer');
+            projectFooters.forEach(footer => {
+                const links = footer.querySelectorAll('a');
+                links.forEach(link => {
+                    const icon = link.querySelector('i');
+                    if (icon && icon.classList.contains('fa-info-circle')) {
+                        link.innerHTML = icon.outerHTML + ' ' + t.demoRequest;
+                    }
+                    if (icon && icon.classList.contains('fa-github')) {
+                        link.innerHTML = icon.outerHTML + ' ' + t.projGithub;
+                    }
+                });
+            });
+
+            // Contact section
+            const contactTitles = document.querySelectorAll('.contact-info h3');
+            if (contactTitles.length >= 1) contactTitles[0].textContent = t.contactTitle;
+            const contactDesc = document.querySelector('.contact-info > p');
+            if (contactDesc) contactDesc.textContent = t.contactDesc;
+
+            const contactLinkLabels = document.querySelectorAll('.contact-link strong');
+            if (contactLinkLabels.length >= 4) {
+                contactLinkLabels[0].textContent = t.contactPhone;
+                contactLinkLabels[1].textContent = t.contactEmail;
+                contactLinkLabels[2].textContent = t.contactLinkedin;
+                contactLinkLabels[3].textContent = t.contactGithub;
+            }
+
+            // Footer
+            const footerDesc = document.querySelector('.footer-desc');
+            if (footerDesc) footerDesc.textContent = t.footerDesc;
+            const footerCopy = document.querySelector('.footer-copy');
+            if (footerCopy) footerCopy.innerHTML = t.footerCopy;
+            const footerTitles = document.querySelectorAll('.footer-social a');
+            if (footerTitles.length >= 3) {
+                footerTitles[0].title = t.footerTitleGithub;
+                footerTitles[1].title = t.footerTitleLinkedin;
+                footerTitles[2].title = t.footerTitleEmail;
+            }
+
+            // Toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Initialize language
+        const savedLang = localStorage.getItem('preferredLang') || 'tr';
+        applyLang(savedLang);
+
+        // Add click listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyLang(btn.dataset.lang);
             });
         });
     </script>
