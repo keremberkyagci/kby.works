@@ -1802,7 +1802,20 @@
                 footerCopy: "© 2026 Kerem Berk Yağcı.",
                 footerTitleGithub: "GitHub",
                 footerTitleLinkedin: "LinkedIn",
-                footerTitleEmail: "Email"
+                footerTitleEmail: "Email",
+                exp1Title: "Automotive Summer Camp - Innovation & Technology",
+                exp1h1: "Training on Software Defined Vehicles (SDV), smart mobility, and digital transformation in the automotive industry.",
+                exp1h2: "Gained industrial innovation vision through product development strategy sessions with Mercedes-Benz and Renault professionals.",
+                exp2Title: "Bilim Virüsü - Renewing the Future Program",
+                exp2h1: "Selected as one of the first 100 participants among all applicants.",
+                exp2h2: "Participated in workshops focused on leadership, crisis decision-making, critical thinking, and time management.",
+                exp2h3: "Conducted case analyses and teamwork with participants from diverse disciplines.",
+                exp3Title: "My Certificates",
+                exp3h1: "EF SET English Certificate (B1)",
+                exp3h2: "Introduction to AI and Its Algorithms",
+                exp3h3: "Presentation Techniques and Communication in Entrepreneurship",
+                exp3h4: "Persuasion Skills, Company Valuation, and Investment Processes",
+                exp3h5: "Currently training for Machine Learning, Deep Learning, and Big Data certificates.",
             }
         };
 
@@ -1842,7 +1855,7 @@
             const sectionTags = document.querySelectorAll('.section-tag');
             const sectionTitles = document.querySelectorAll('.section-title');
             const sectionDescs = document.querySelectorAll('.section-desc');
-            if (sectionTags.length >= 4) {
+            if (sectionTags.length >= 5) {
                 sectionTags[0].textContent = t.sectionTagAbout;
                 sectionTags[1].textContent = t.sectionTagSkills;
                 sectionTags[2].textContent = t.sectionTagProjects;
@@ -1919,6 +1932,38 @@
                 const icon = btn.querySelector('i');
                 if (icon) btn.innerHTML = icon.outerHTML + ' ' + t.caseStudyBtn;
             });
+
+            // Timeline
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            if (timelineItems.length >= 3) {
+                const title1 = timelineItems[0].querySelector('h3');
+                if (title1) title1.textContent = t.exp1Title;
+                const highlights1 = timelineItems[0].querySelectorAll('li');
+                if (highlights1.length >= 2) {
+                    highlights1[0].textContent = t.exp1h1;
+                    highlights1[1].textContent = t.exp1h2;
+                }
+
+                const title2 = timelineItems[1].querySelector('h3');
+                if (title2) title2.textContent = t.exp2Title;
+                const highlights2 = timelineItems[1].querySelectorAll('li');
+                if (highlights2.length >= 3) {
+                    highlights2[0].textContent = t.exp2h1;
+                    highlights2[1].textContent = t.exp2h2;
+                    highlights2[2].textContent = t.exp2h3;
+                }
+
+                const title3 = timelineItems[2].querySelector('h3');
+                if (title3) title3.textContent = t.exp3Title;
+                const highlights3 = timelineItems[2].querySelectorAll('li');
+                if (highlights3.length >= 5) {
+                    highlights3[0].textContent = t.exp3h1;
+                    highlights3[1].textContent = t.exp3h2;
+                    highlights3[2].textContent = t.exp3h3;
+                    highlights3[3].textContent = t.exp3h4;
+                    highlights3[4].textContent = t.exp3h5;
+                }
+            }
 
             // Contact
             const contactTitles = document.querySelectorAll('.contact-info h3');
